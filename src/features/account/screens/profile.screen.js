@@ -12,14 +12,14 @@ import { useNavigation } from "@react-navigation/native";
 
 const PROFILE_KEY = "PROFILE_KEY";
 
-const ProfileScreen = () => {
+export const ProfileScreen = ({ navigation }) => {
   const [isEditingName, setIsEditingName] = React.useState(false);
   const [isEditingEmail, setIsEditingEmail] = React.useState(false);
   const [name, setName] = React.useState("");
   const [email, setEmail] = React.useState("");
   const [company, setCompany] = React.useState("");
 
-  const navigation = useNavigation();
+  // const navigation = useNavigation();
 
   React.useEffect(() => {
     const getProfileData = async () => {
@@ -43,11 +43,11 @@ const ProfileScreen = () => {
   };
 
   const handleEditCompany = () => {
-    navigation.navigate("EditCompany");
+    navigation.navigate("CompanySelect");
   };
 
   const handleEditAnswers = () => {
-    navigation.navigate("EditAnswers");
+    navigation.navigate("StartQuestions");
   };
 
   const handleSave = async () => {
@@ -147,5 +147,3 @@ const styles = StyleSheet.create({
     flex: 1,
   },
 });
-
-export default ProfileScreen;

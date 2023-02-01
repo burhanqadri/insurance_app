@@ -17,7 +17,7 @@ const companies = [
   { name: "Zoom", available: true },
 ];
 
-const CompanySelectScreen = () => {
+export const CompanySelectScreen = ({ navigation }) => {
   const [searchTerm, setSearchTerm] = useState("");
   const [filteredCompanies, setFilteredCompanies] = useState(companies);
 
@@ -66,5 +66,3 @@ const CompanySelectScreen = () => {
     </View>
   );
 };
-
-export default CompanySelectScreen;

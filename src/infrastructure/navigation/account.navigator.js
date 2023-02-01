@@ -1,7 +1,5 @@
-// import { ConnectCreditCardScreen } from "../../features/account/screens/07_connectCreditCard.screen";
-// import { EmailAddressScreen } from "../../features/account/screens/02_enterEmail.screen";
-
 import { CompanySelectScreen } from "../../features/account/screens/companySelect.screen";
+import { Header } from "../../components/header/header.component";
 import { OnboardingExplainersScreen } from "../../features/account/screens/onboardingExplainers.screen";
 import { ProfileScreen } from "../../features/account/screens/profile.screen";
 import React from "react";

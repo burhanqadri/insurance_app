@@ -10,7 +10,7 @@ const services = [
     coveragePercent: 90,
     maximum: 10000,
     referralRequired: false,
-    icon: require("./service1.png"),
+    icon: require("../../../../assets/pic_1.jpg"),
   },
   {
     id: 2,
@@ -18,7 +18,7 @@ const services = [
     coveragePercent: 80,
     maximum: 5000,
     referralRequired: true,
-    icon: require("./service2.png"),
+    icon: require("../../../../assets/pic_1.jpg"),
   },
   {
     id: 3,
@@ -26,7 +26,7 @@ const services = [
     coveragePercent: 70,
     maximum: 3000,
     referralRequired: false,
-    icon: require("./service3.png"),
+    icon: require("../../../../assets/pic_1.jpg"),
   },
   //   ...
 ];
@@ -57,7 +57,7 @@ const ServiceRow = ({ service }) => {
   );
 };
 
-const PlanOverviewScreen = () => (
+export const PlanOverviewScreen = ({ navigation }) => (
   <View style={styles.container}>
     {services.map((service) => (
       <ServiceRow key={service.id} service={service} />
@@ -98,5 +98,3 @@ const styles = StyleSheet.create({
     fontSize: 14,
   },
 });
-
-export default PlanOverviewScreen;

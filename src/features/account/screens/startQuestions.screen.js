@@ -1,7 +1,7 @@
 import { Button, Picker, Text, TextInput, View } from "react-native";
 import React, { useState } from "react";
 
-import AsyncStorage from "@react-native-community/async-storage";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const questions = [
   {
@@ -17,7 +17,7 @@ const questions = [
   //...
 ];
 
-const StartQuestionsScreen = () => {
+export const StartQuestionsScreen = ({ navigation }) => {
   const [step, setStep] = useState(1);
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -91,5 +91,3 @@ const StartQuestionsScreen = () => {
 
   return <View>{renderStep()}</View>;
 };
-
-export default StartQuestionsScreen;
