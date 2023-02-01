@@ -1,38 +1,38 @@
-import React, { useState } from 'react';
-import { View, Text, Image, Button } from 'react-native';
+import { Button, Image, Text, View } from "react-native";
+import React, { useState } from "react";
 
 const onboardingScreens = [
   {
     id: 1,
-    title: 'Screen 1 Title',
-    text: 'Screen 1 Text',
-    image: require('./screen1.png'),
+    title: "Screen 1 Title",
+    text: "Screen 1 Text",
+    image: require("./screen1.png"),
   },
   {
     id: 2,
-    title: 'Screen 2 Title',
-    text: 'Screen 2 Text',
-    image: require('./screen2.png'),
+    title: "Screen 2 Title",
+    text: "Screen 2 Text",
+    image: require("./screen2.png"),
   },
   {
     id: 3,
-    title: 'Screen 3 Title',
-    text: 'Screen 3 Text',
-    image: require('./screen3.png'),
+    title: "Screen 3 Title",
+    text: "Screen 3 Text",
+    image: require("./screen3.png"),
   },
   {
     id: 4,
-    title: 'Screen 4 Title',
-    text: 'Screen 4 Text',
-    image: require('./screen4.png'),
+    title: "Screen 4 Title",
+    text: "Screen 4 Text",
+    image: require("./screen4.png"),
   },
   {
     id: 5,
-    title: 'Screen 5 Title',
-    text: 'Screen 5 Text',
-    image: require('./screen5.png'),
+    title: "Screen 5 Title",
+    text: "Screen 5 Text",
+    image: require("./screen5.png"),
   },
-  ...
+  //...
 ];
 
 const Onboarding = () => {
