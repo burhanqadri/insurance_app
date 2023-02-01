@@ -12,7 +12,7 @@ import { useNavigation } from "@react-navigation/native";
 
 const PROFILE_KEY = "PROFILE_KEY";
 
-const Profile = () => {
+const ProfileScreen = () => {
   const [isEditingName, setIsEditingName] = React.useState(false);
   const [isEditingEmail, setIsEditingEmail] = React.useState(false);
   const [name, setName] = React.useState("");
@@ -148,4 +148,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Profile;
+export default ProfileScreen;

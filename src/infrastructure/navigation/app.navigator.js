@@ -2,13 +2,13 @@ import React, { useContext, useEffect } from "react";
 
 import { Header } from "../../components/header/header.component";
 import { Ionicons } from "@expo/vector-icons";
-import { LearnNavigator } from "./learn.navigator";
 import { MainNavigator } from "./main.navigator";
-import { ProfileScreen } from "../../features/settings/screens/settings.screen.tsx";
+import { ProfileScreen } from "../../features/account/screens/profile.screen";
 import { colors } from "../../infrastructure/theme/colors";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
+// import { LearnNavigator } from "./learn.navigator";
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
 
@@ -35,33 +35,33 @@ const createScreenOptions = ({ route }) => {
   };
 };
 
-// function Tabs() {
-//   return (
-//     <Tab.Navigator screenOptions={createScreenOptions}>
-//       <Tab.Screen name="HomeTab" component={MainNavigator} />
-//       {/* <Tab.Screen name="LearnTab" component={LearnNavigator} /> */}
-//     </Tab.Navigator>
-//   );
-// }
+function Tabs() {
+  return (
+    <Tab.Navigator screenOptions={createScreenOptions}>
+      <Tab.Screen name="HomeTab" component={MainNavigator} />
+      {/* <Tab.Screen name="LearnTab" component={LearnNavigator} /> */}
+    </Tab.Navigator>
+  );
+}
 
-// export const MainNavigator = () => {
-//   return (
-//     <Stack.Navigator
-//       screenOptions={{
-//         headerTitle: (props) => <Header />,
-//         headerShadowVisible: false,
-//         headerStyle: {
-//           backgroundColor: "#fffff9",
-//         },
-//         headerBackVisible: false,
-//       }}
-//     >
-//       <Stack.Screen
-//         name="Tabs"
-//         component={Tabs}
-//         options={{ headerShown: false }}
-//       />
-//       <Stack.Screen name="Settings" component={ProfileScreen} />
-//     </Stack.Navigator>
-//   );
-// };
+export const AppNavigator = () => {
+  return (
+    <Stack.Navigator
+      screenOptions={{
+        headerTitle: (props) => <Header />,
+        headerShadowVisible: false,
+        headerStyle: {
+          backgroundColor: "#fffff9",
+        },
+        headerBackVisible: false,
+      }}
+    >
+      <Stack.Screen
+        name="Tabs"
+        component={Tabs}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen name="Profile" component={ProfileScreen} />
+    </Stack.Navigator>
+  );
+};

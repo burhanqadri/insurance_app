@@ -1,11 +1,11 @@
-//@collapse
-
 // import { ConnectCreditCardScreen } from "../../features/account/screens/07_connectCreditCard.screen";
 // import { EmailAddressScreen } from "../../features/account/screens/02_enterEmail.screen";
-// import { EnterNameScreen } from "../../features/account/screens/01_enterName.screen";
-// import { SetReasonsScreen } from "../../features/account/screens/04_setReasons.screen";
 
+import { CompanySelectScreen } from "../../features/account/screens/companySelect.screen";
+import { OnboardingExplainersScreen } from "../../features/account/screens/onboardingExplainers.screen";
+import { ProfileScreen } from "../../features/account/screens/profile.screen";
 import React from "react";
+import { StartQuestionsScreen } from "../../features/account/screens/startQuestions.screen";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
 const Stack = createNativeStackNavigator();
@@ -21,22 +21,12 @@ export const AccountNavigator = () => (
       headerBackVisible: false,
     }}
   >
-    <Stack.Screen name="EnterName" component={EnterNameScreen} />
-    <Stack.Screen name="EmailAddress" component={EmailAddressScreen} />
     <Stack.Screen
-      name="OnboardingQuestions"
-      component={OnboardingQuestionsScreen}
+      name="OnboardingExplainers"
+      component={OnboardingExplainersScreen}
     />
-    {/* <Stack.Screen name="SetReasons" component={SetReasonsScreen} /> */}
-    {/* <Stack.Screen name="YourThreeHabits" component={YourThreeHabitsScreen} /> */}
-    <Stack.Screen
-      name="AccountabilityPhoneNumbers"
-      component={AccountabilityPhoneNumbersScreen}
-    />
-    {/* <Stack.Screen
-      name="ConnectCreditCard"
-      component={ConnectCreditCardScreen}
-    /> */}
-    <Stack.Screen name="EnterPhone" component={EnterPhoneScreen} />
+    <Stack.Screen name="StartQuestions" component={StartQuestionsScreen} />
+    <Stack.Screen name="CompanySelect" component={CompanySelectScreen} />
+    <Stack.Screen name="Profile" component={ProfileScreen} />
   </Stack.Navigator>
 );

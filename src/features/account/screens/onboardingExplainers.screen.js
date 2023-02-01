@@ -35,7 +35,7 @@ const onboardingScreens = [
   //...
 ];
 
-const Onboarding = () => {
+const OnboardingExplainersScreen = () => {
   const [currentScreen, setCurrentScreen] = useState(0);
 
   const handleNext = () => {
@@ -63,4 +63,4 @@ const Onboarding = () => {
   );
 };
 
-export default Onboarding;
+export default OnboardingExplainersScreen;

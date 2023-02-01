@@ -17,7 +17,7 @@ const companies = [
   { name: "Zoom", available: true },
 ];
 
-const CompanySelector = () => {
+const CompanySelectScreen = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [filteredCompanies, setFilteredCompanies] = useState(companies);
 
@@ -67,4 +67,4 @@ const CompanySelector = () => {
   );
 };
 
-export default CompanySelector;
+export default CompanySelectScreen;

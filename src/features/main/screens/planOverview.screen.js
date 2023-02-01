@@ -57,7 +57,7 @@ const ServiceRow = ({ service }) => {
   );
 };
 
-const PlanOverview = () => (
+const PlanOverviewScreen = () => (
   <View style={styles.container}>
     {services.map((service) => (
       <ServiceRow key={service.id} service={service} />
@@ -99,4 +99,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default PlanOverview;
+export default PlanOverviewScreen;

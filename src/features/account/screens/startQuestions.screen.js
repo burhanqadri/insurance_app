@@ -17,7 +17,7 @@ const questions = [
   //...
 ];
 
-const Survey = () => {
+const StartQuestionsScreen = () => {
   const [step, setStep] = useState(1);
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -92,4 +92,4 @@ const Survey = () => {
   return <View>{renderStep()}</View>;
 };
 
-export default Survey;
+export default StartQuestionsScreen;
