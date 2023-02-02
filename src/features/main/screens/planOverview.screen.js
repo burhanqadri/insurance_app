@@ -1,8 +1,14 @@
-import { Image, TouchableOpacity, View } from "react-native";
+import {
+  Avatar,
+  Card,
+  IconButton,
+  List,
+  Paragraph,
+  Title,
+} from "react-native-paper";
+import { Image, TouchableOpacity } from "react-native";
+import React, { useEffect } from "react";
 
-import { Ionicons } from "@expo/vector-icons";
-import React from "react";
-import styled from "styled-components/native";
 import { useNavigation } from "@react-navigation/native";
 
 const services = [
@@ -30,7 +36,6 @@ const services = [
     referralRequired: false,
     icon: require("../../../../assets/pic_1.jpg"),
   },
-  //   ...
 ];
 
 const ServiceRow = ({ service }) => {
@@ -42,77 +47,42 @@ const ServiceRow = ({ service }) => {
 
   return (
     <TouchableOpacity onPress={handlePress}>
-      <Row>
-        <Image
-          source={service.icon}
-          style={{ width: 50, height: 50, marginRight: 20 }}
+      <Card style={{ marginVertical: 10 }}>
+        <Card.Title
+          title={service.name}
+          left={(props) => <Avatar.Image source={service.icon} size={50} />}
         />
-        <Details>
-          <Name>{service.name}</Name>
-          <Coverage>Coverage: {service.coveragePercent}%</Coverage>
-          <Maximum>Maximum: {service.maximum}</Maximum>
-          <Referral>
+        <Card.Content>
+          <Paragraph>Coverage: {service.coveragePercent}%</Paragraph>
+          <Paragraph>Maximum: {service.maximum}</Paragraph>
+          <Paragraph>
             Referral Required: {service.referralRequired ? "Yes" : "No"}
-          </Referral>
-        </Details>
-      </Row>
+          </Paragraph>
+        </Card.Content>
+      </Card>
     </TouchableOpacity>
   );
 };
 
 export const PlanOverviewScreen = ({ navigation }) => {
-  React.useLayoutEffect(() => {
+  useEffect(() => {
     navigation.setOptions({
       headerLeft: () => (
-        <TouchableOpacity
-          onPress={() => {
-            navigation.navigate("Main");
-          }}
-        >
-          <Ionicons name="arrow-back" size={24} color="black" />
-        </TouchableOpacity>
+        <IconButton
+          icon="user"
+          size={24}
+          color="black"
+          onPress={() => navigation.navigate("Main")}
+        />
       ),
     });
   }, []);
 
   return (
-    <Container>
+    <List.Section>
       {services.map((service) => (
         <ServiceRow key={service.id} service={service} />
       ))}
-    </Container>
+    </List.Section>
   );
 };
-
-const Container = styled.View`
-  background-color: #f5f5f5;
-`;
-
-const Row = styled.View`
-  flex-direction: row;
-  align-items: center;
-  padding: 20px;
-  background-color: white;
-  margin-vertical: 10px;
-`;
-
-const Details = styled.View`
-  flex: 1;
-`;
-
-const Name = styled.Text`
-  font-weight: bold;
-  font-size: 16px;
-`;
-
-const Coverage = styled.Text`
-  font-size: 14px;
-`;
-
-const Maximum = styled.Text`
-  font-size: 14px;
-`;
-
-const Referral = styled.Text`
-  font-size: 14px;
-`;

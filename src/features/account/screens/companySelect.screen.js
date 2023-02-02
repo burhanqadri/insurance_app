@@ -38,6 +38,7 @@ export const CompanySelectScreen = ({ navigation }) => {
         placeholder="Search for a company"
         onChangeText={handleSearch}
         value={searchTerm}
+        style={{ margin: 8 }}
       />
       <ScrollView style={{ padding: 16 }}>
         {filteredCompanies.map((company, index) => (
@@ -55,6 +56,7 @@ export const CompanySelectScreen = ({ navigation }) => {
               color="gray"
               style={{ marginRight: 16 }}
             />
+            {/* <Image source={require("company_logo")} /> */}
             <View style={{ flex: 1 }}>
               <Text style={{ fontSize: 20 }}>{company.name}</Text>
             </View>

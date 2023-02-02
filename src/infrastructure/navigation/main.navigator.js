@@ -12,6 +12,9 @@ const Stack = createNativeStackNavigator();
 export const MainNavigator = () => (
   <Stack.Navigator
     screenOptions={{
+      contentStyle: {
+        backgroundColor: "#FFFFFF",
+      },
       headerTitle: (props) => <Header />,
       headerShadowVisible: false,
       headerStyle: {
