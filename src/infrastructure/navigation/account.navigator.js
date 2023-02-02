@@ -25,7 +25,7 @@ export const AccountNavigator = () => (
       name="OnboardingExplainers"
       component={OnboardingExplainersScreen}
     /> */}
-    <Stack.Screen name="CompanySelect" component={CompanySelectScreen} />
+    {/* <Stack.Screen name="CompanySelect" component={CompanySelectScreen} /> */}
     <Stack.Screen name="Profile" component={ProfileScreen} />
   </Stack.Navigator>
 );

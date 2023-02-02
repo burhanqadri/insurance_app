@@ -1,15 +1,16 @@
 import {
+  ActivityIndicator,
   Avatar,
   Card,
-  IconButton,
-  List,
+  Chip,
   Paragraph,
-  Title,
+  Searchbar,
+  Text,
 } from "react-native-paper";
-import { Image, TouchableOpacity } from "react-native";
-import React, { useEffect } from "react";
+import { Image, ScrollView, View } from "react-native";
+import React, { useState } from "react";
 
-import { useNavigation } from "@react-navigation/native";
+import { SafeArea } from "../../../components/container/safeArea.component";
 
 const services = [
   {
@@ -36,53 +37,98 @@ const services = [
     referralRequired: false,
     icon: require("../../../../assets/pic_1.jpg"),
   },
+  // ...
 ];
 
-const ServiceRow = ({ service }) => {
-  const navigation = useNavigation();
-
+const ServiceRow = ({ service, navigation }) => {
   const handlePress = () => {
     navigation.navigate("ServiceDetails", { serviceId: service.id });
   };
 
   return (
-    <TouchableOpacity onPress={handlePress}>
-      <Card style={{ marginVertical: 10 }}>
-        <Card.Title
-          title={service.name}
-          left={(props) => <Avatar.Image source={service.icon} size={50} />}
-        />
-        <Card.Content>
-          <Paragraph>Coverage: {service.coveragePercent}%</Paragraph>
-          <Paragraph>Maximum: {service.maximum}</Paragraph>
-          <Paragraph>
-            Referral Required: {service.referralRequired ? "Yes" : "No"}
-          </Paragraph>
-        </Card.Content>
-      </Card>
-    </TouchableOpacity>
+    <Card
+      style={{
+        // marginRight: 20,
+        marginVertical: 10,
+        borderRadius: 10,
+        minWidth: 200,
+      }}
+      onPress={handlePress}
+    >
+      <Card.Title
+        title={service.name}
+        left={(props) => <Avatar.Image source={service.icon} />}
+      />
+      <Card.Content>
+        <Paragraph>Coverage: {service.coveragePercent}%</Paragraph>
+        <Paragraph>Maximum: {service.maximum}</Paragraph>
+        <View>
+          <Chip>
+            {service.referralRequired ? "Referral Required" : "No Referral"}
+          </Chip>
+        </View>
+      </Card.Content>
+    </Card>
   );
 };
 
 export const PlanOverviewScreen = ({ navigation }) => {
-  useEffect(() => {
-    navigation.setOptions({
-      headerLeft: () => (
-        <IconButton
-          icon="user"
-          size={24}
-          color="black"
-          onPress={() => navigation.navigate("Main")}
-        />
-      ),
-    });
-  }, []);
+  const [searchQuery, setSearchQuery] = useState("");
+  const [filteredServices, setFilteredServices] = useState(services);
+  const [loading, setLoading] = useState(false);
+
+  const handleSearch = (query) => {
+    setSearchQuery(query);
+    setLoading(true);
+
+    setTimeout(() => {
+      const filteredData = services.filter((service) =>
+        service.name.toLowerCase().includes(query.toLowerCase())
+      );
+
+      setFilteredServices(filteredData);
+      setLoading(false);
+    }, 1000);
+  };
 
   return (
-    <List.Section>
-      {services.map((service) => (
-        <ServiceRow key={service.id} service={service} />
-      ))}
-    </List.Section>
+    <SafeArea>
+      <ScrollView style={{ flex: 1, marginHorizontal: 15 }}>
+        <Searchbar
+          placeholder="Search services"
+          value={searchQuery}
+          onChangeText={handleSearch}
+          style={{ marginHorizontal: 10, marginTop: 20 }}
+        />
+        <Text variant="headlineMedium">Paramedical</Text>
+        <Text variant="titleSmall">
+          This group has a total of $1000 combined across all services
+        </Text>
+        <ScrollView horizontal={true} style={{ minHeight: 200, marginTop: 20 }}>
+          {services.map((service) => (
+            <View style={{ marginRight: 20 }}>
+              <ServiceRow
+                key={service.id}
+                service={service}
+                navigation={navigation}
+              />
+            </View>
+          ))}
+        </ScrollView>
+        {loading ? (
+          <ActivityIndicator size="large" style={{ marginTop: 20 }} />
+        ) : (
+          <View>
+            {filteredServices.map((service) => (
+              <ServiceRow
+                key={service.id}
+                service={service}
+                style={{ marginHorizontal: 20 }}
+              />
+            ))}
+          </View>
+        )}
+      </ScrollView>
+    </SafeArea>
   );
 };
