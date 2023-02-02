@@ -1,5 +1,6 @@
 import { CompanySelectScreen } from "../../features/account/screens/companySelect.screen";
 import { Header } from "../../components/header/header.component";
+import { InterestedBenefitsScreen } from "../../features/account/screens/interestedBenefits.screen";
 import { OnboardingExplainersScreen } from "../../features/account/screens/onboardingExplainers.screen";
 import { ProfileScreen } from "../../features/account/screens/profile.screen";
 import React from "react";
@@ -24,6 +25,10 @@ export const AccountNavigator = () => (
       component={OnboardingExplainersScreen}
     /> */}
     {/* <Stack.Screen name="StartQuestions" component={StartQuestionsScreen} /> */}
+    <Stack.Screen
+      name="InterestedBenefits"
+      component={InterestedBenefitsScreen}
+    />
     <Stack.Screen name="CompanySelect" component={CompanySelectScreen} />
     <Stack.Screen name="Profile" component={ProfileScreen} />
   </Stack.Navigator>
