@@ -44,7 +44,7 @@ const Text = styled.Text`
   flex: 1;
 `;
 
-const ProfileScreen = ({ navigation }) => {
+export const ProfileScreen = ({ navigation }) => {
   // const navigation = useNavigation();
   const [isEditingName, setIsEditingName] = useState(false);
   const [isEditingEmail, setIsEditingEmail] = useState(false);
@@ -98,7 +98,7 @@ const ProfileScreen = ({ navigation }) => {
           <Label>Name:</Label>
           {isEditingName ? (
             <TextInput
-              style={styles.input}
+              // style={styles.input}
               value={name}
               onChangeText={setName}
               onBlur={() => setIsEditingName(false)}
@@ -113,7 +113,7 @@ const ProfileScreen = ({ navigation }) => {
           <Label>Email:</Label>
           {isEditingEmail ? (
             <TextInput
-              style={styles.input}
+              // style={styles.input}
               value={email}
               onChangeText={setEmail}
               onBlur={() => setIsEditingEmail(false)}

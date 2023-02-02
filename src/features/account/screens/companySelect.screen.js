@@ -1,12 +1,7 @@
-import {
-  Button,
-  ScrollView,
-  Text,
-  TextInput,
-  TouchableOpacity,
-  View,
-} from "react-native";
+import { Button, ScrollView, Text, View } from "react-native";
 import React, { useState } from "react";
+
+import styled from "styled-components/native";
 
 const companies = [
   { name: "Apple", available: true },
@@ -17,6 +12,40 @@ const companies = [
   { name: "Uber", available: false },
   { name: "Zoom", available: true },
 ];
+
+const Container = styled.View`
+  padding: 16px;
+`;
+
+const SearchInput = styled.TextInput`
+  height: 40px;
+  border-color: gray;
+  border-width: 1px;
+  margin-top: 16px;
+  padding: 8px;
+  border-radius: 8px;
+`;
+
+const CompanyContainer = styled.View`
+  margin-bottom: 16px;
+`;
+
+const CompanyText = styled.Text`
+  font-size: 20px;
+  padding: 16px;
+  border-radius: 8px;
+`;
+
+const CompanyButton = styled.TouchableOpacity`
+  padding: 8px;
+  margin-top: 8px;
+  background-color: lightgray;
+  border-radius: 8px;
+`;
+
+const NextButton = styled.Button`
+  margin-top: 16px;
+`;
 
 export const CompanySelectScreen = ({ navigation }) => {
   const [searchTerm, setSearchTerm] = useState("");
@@ -31,45 +60,42 @@ export const CompanySelectScreen = ({ navigation }) => {
   };
 
   return (
-    <View style={{ padding: 16 }}>
-      <TextInput
-        style={{ height: 40, borderColor: "gray", borderWidth: 1 }}
+    <Container>
+      <SearchInput
         placeholder="Search for a company"
         onChangeText={handleSearch}
         value={searchTerm}
       />
-      <ScrollView style={{ marginTop: 16 }}>
+      <ScrollView>
         {filteredCompanies.map((company, index) => (
-          <View key={index} style={{ marginBottom: 16 }}>
+          <CompanyContainer key={index}>
             {company.available ? (
-              <TouchableOpacity
-                style={{ padding: 8, backgroundColor: "lightgray" }}
+              <CompanyButton
                 onPress={() => console.log(`Selected ${company.name}`)}
               >
-                <Text>{company.name}</Text>
-              </TouchableOpacity>
+                <CompanyText>{company.name}</CompanyText>
+              </CompanyButton>
             ) : (
-              <View style={{ padding: 8, backgroundColor: "lightgray" }}>
-                <Text>{company.name}</Text>
-                <TouchableOpacity
-                  style={{ marginTop: 8 }}
+              <CompanyContainer>
+                <CompanyText>{company.name}</CompanyText>
+                <CompanyButton
                   onPress={() =>
                     console.log(`Requested to add ${company.name}`)
                   }
                 >
-                  <Text>Request to add</Text>
-                </TouchableOpacity>
-              </View>
+                  <CompanyText>Request to add</CompanyText>
+                </CompanyButton>
+              </CompanyContainer>
             )}
-          </View>
+          </CompanyContainer>
         ))}
-        <Button
+        <NextButton
           title={"Next"}
           onPress={() => {
             navigation.navigate("Profile");
           }}
         />
       </ScrollView>
-    </View>
+    </Container>
   );
 };

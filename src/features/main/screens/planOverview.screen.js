@@ -1,5 +1,6 @@
 import { Image, TouchableOpacity, View } from "react-native";
 
+import { Ionicons } from "@expo/vector-icons";
 import React from "react";
 import styled from "styled-components/native";
 import { useNavigation } from "@react-navigation/native";
@@ -42,7 +43,10 @@ const ServiceRow = ({ service }) => {
   return (
     <TouchableOpacity onPress={handlePress}>
       <Row>
-        <Image source={service.icon} style={styles.icon} />
+        <Image
+          source={service.icon}
+          style={{ width: 50, height: 50, marginRight: 20 }}
+        />
         <Details>
           <Name>{service.name}</Name>
           <Coverage>Coverage: {service.coveragePercent}%</Coverage>
@@ -56,13 +60,29 @@ const ServiceRow = ({ service }) => {
   );
 };
 
-export const PlanOverviewScreen = ({ navigation }) => (
-  <Container>
-    {services.map((service) => (
-      <ServiceRow key={service.id} service={service} />
-    ))}
-  </Container>
-);
+export const PlanOverviewScreen = ({ navigation }) => {
+  React.useLayoutEffect(() => {
+    navigation.setOptions({
+      headerLeft: () => (
+        <TouchableOpacity
+          onPress={() => {
+            navigation.navigate("Main");
+          }}
+        >
+          <Ionicons name="arrow-back" size={24} color="black" />
+        </TouchableOpacity>
+      ),
+    });
+  }, []);
+
+  return (
+    <Container>
+      {services.map((service) => (
+        <ServiceRow key={service.id} service={service} />
+      ))}
+    </Container>
+  );
+};
 
 const Container = styled.View`
   background-color: #f5f5f5;

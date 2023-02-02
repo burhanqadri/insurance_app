@@ -7,8 +7,8 @@ import { NavigationContainer } from "@react-navigation/native";
 export const Navigation = () => {
   return (
     <NavigationContainer>
-      {/* <AccountNavigator /> */}
-      <AppNavigator />
+      <AccountNavigator />
+      {/* <AppNavigator /> */}
       {/* {uid ? <AppNavigator /> : <AccountNavigator />} */}
     </NavigationContainer>
   );
