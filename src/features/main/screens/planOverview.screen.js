@@ -7,9 +7,10 @@ import {
   Searchbar,
   Text,
 } from "react-native-paper";
-import { Image, ScrollView, View } from "react-native";
+import { Image, ScrollView, TouchableOpacity, View } from "react-native";
 import React, { useState } from "react";
 
+import { FontAwesome } from "@expo/vector-icons";
 import { SafeArea } from "../../../components/container/safeArea.component";
 
 const services = [
@@ -73,6 +74,19 @@ const ServiceRow = ({ service, navigation }) => {
 };
 
 export const PlanOverviewScreen = ({ navigation }) => {
+  React.useLayoutEffect(() => {
+    navigation.setOptions({
+      headerLeft: () => (
+        <TouchableOpacity
+          onPress={() => {
+            navigation.navigate("AccountNavigator", { screen: "Profile" });
+          }}
+        >
+          <FontAwesome name="user-circle-o" size={24} color="black" />
+        </TouchableOpacity>
+      ),
+    });
+  }, []);
   const [searchQuery, setSearchQuery] = useState("");
   const [filteredServices, setFilteredServices] = useState(services);
   const [loading, setLoading] = useState(false);
@@ -98,23 +112,40 @@ export const PlanOverviewScreen = ({ navigation }) => {
           placeholder="Search services"
           value={searchQuery}
           onChangeText={handleSearch}
-          style={{ marginHorizontal: 10, marginTop: 20 }}
+          style={{ marginHorizontal: 10, marginVertical: 20 }}
         />
-        <Text variant="headlineMedium">Paramedical</Text>
-        <Text variant="titleSmall">
-          This group has a total of $1000 combined across all services
-        </Text>
-        <ScrollView horizontal={true} style={{ minHeight: 200, marginTop: 20 }}>
-          {services.map((service) => (
-            <View style={{ marginRight: 20 }}>
-              <ServiceRow
-                key={service.id}
-                service={service}
-                navigation={navigation}
-              />
-            </View>
-          ))}
-        </ScrollView>
+        <View
+          style={{
+            backgroundColor: "#ff300040",
+            borderRadius: 10,
+            padding: 10,
+          }}
+        >
+          <Text variant="headlineSmall" style={{ fontWeight: "bold" }}>
+            Paramedical
+          </Text>
+          <Text variant="titleSmall">$1000 combined across all services</Text>
+          <ScrollView
+            horizontal={true}
+            style={{
+              minHeight: 200,
+              marginTop: 20,
+              // borderRadius: 10,
+              marginRight: -20,
+              // backgroundColor: "#ff300040",
+            }}
+          >
+            {services.map((service) => (
+              <View style={{ marginRight: 20 }}>
+                <ServiceRow
+                  key={service.id}
+                  service={service}
+                  navigation={navigation}
+                />
+              </View>
+            ))}
+          </ScrollView>
+        </View>
         {loading ? (
           <ActivityIndicator size="large" style={{ marginTop: 20 }} />
         ) : (

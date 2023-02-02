@@ -6,8 +6,10 @@ import {
   RadioButton,
   TextInput,
 } from "react-native-paper";
-import { AsyncStorage, ScrollView, Text, View } from "react-native";
 import React, { useState } from "react";
+import { ScrollView, Text, View } from "react-native";
+
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const questions = [
   {
@@ -59,7 +61,7 @@ const questions = [
   // ...
 ];
 
-export const OnboardingSurvey = ({ navigation }) => {
+export const OnboardingQuestionsScreen = ({ navigation }) => {
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [answers, setAnswers] = useState({});
   const [loading, setLoading] = useState(false);
