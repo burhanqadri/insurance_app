@@ -1,6 +1,7 @@
-import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import { Image, TouchableOpacity, View } from "react-native";
 
 import React from "react";
+import styled from "styled-components/native";
 import { useNavigation } from "@react-navigation/native";
 
 const services = [
@@ -40,61 +41,58 @@ const ServiceRow = ({ service }) => {
 
   return (
     <TouchableOpacity onPress={handlePress}>
-      <View style={styles.row}>
+      <Row>
         <Image source={service.icon} style={styles.icon} />
-        <View style={styles.details}>
-          <Text style={styles.name}>{service.name}</Text>
-          <Text style={styles.coverage}>
-            Coverage: {service.coveragePercent}%
-          </Text>
-          <Text style={styles.maximum}>Maximum: {service.maximum}</Text>
-          <Text style={styles.referral}>
+        <Details>
+          <Name>{service.name}</Name>
+          <Coverage>Coverage: {service.coveragePercent}%</Coverage>
+          <Maximum>Maximum: {service.maximum}</Maximum>
+          <Referral>
             Referral Required: {service.referralRequired ? "Yes" : "No"}
-          </Text>
-        </View>
-      </View>
+          </Referral>
+        </Details>
+      </Row>
     </TouchableOpacity>
   );
 };
 
 export const PlanOverviewScreen = ({ navigation }) => (
-  <View style={styles.container}>
+  <Container>
     {services.map((service) => (
       <ServiceRow key={service.id} service={service} />
     ))}
-  </View>
+  </Container>
 );
 
-const styles = StyleSheet.create({
-  container: {
-    backgroundColor: "#F5F5F5",
-  },
-  row: {
-    flexDirection: "row",
-    alignItems: "center",
-    padding: 20,
-    backgroundColor: "white",
-    marginVertical: 10,
-  },
-  icon: {
-    width: 50,
-    height: 50,
-    marginRight: 20,
-  },
-  details: {
-    flex: 1,
-  },
-  name: {
-    fontWeight: "bold",
-    fontSize: 16,
-  },
-  coverage: {
-    fontSize: 14,
-  },
-  maximum: {
-    fontSize: 14,
-  },
-  referral: {
-    fontSize: 14,
-  },
-});
+const Container = styled.View`
+  background-color: #f5f5f5;
+`;
+
+const Row = styled.View`
+  flex-direction: row;
+  align-items: center;
+  padding: 20px;
+  background-color: white;
+  margin-vertical: 10px;
+`;
+
+const Details = styled.View`
+  flex: 1;
+`;
+
+const Name = styled.Text`
+  font-weight: bold;
+  font-size: 16px;
+`;
+
+const Coverage = styled.Text`
+  font-size: 14px;
+`;
+
+const Maximum = styled.Text`
+  font-size: 14px;
+`;
+
+const Referral = styled.Text`
+  font-size: 14px;
+`;

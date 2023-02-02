@@ -1,7 +1,8 @@
-import { Button, Picker, Text, TextInput, View } from "react-native";
+import { Button, Text, TextInput, View } from "react-native";
 import React, { useState } from "react";
 
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import { Picker } from "@react-native-picker/picker";
 
 const questions = [
   {

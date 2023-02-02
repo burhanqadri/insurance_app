@@ -1,27 +1,58 @@
-import {
-  AsyncStorage,
-  StyleSheet,
-  Text,
-  TextInput,
-  TouchableOpacity,
-  View,
-} from "react-native";
+import { AsyncStorage, TouchableOpacity, View } from "react-native";
+import React, { useEffect, useState } from "react";
 
-import React from "react";
-import { useNavigation } from "@react-navigation/native";
+import styled from "styled-components/native";
+
+// import { useNavigation } from '@react-navigation/native';
 
 const PROFILE_KEY = "PROFILE_KEY";
 
-export const ProfileScreen = ({ navigation }) => {
-  const [isEditingName, setIsEditingName] = React.useState(false);
-  const [isEditingEmail, setIsEditingEmail] = React.useState(false);
-  const [name, setName] = React.useState("");
-  const [email, setEmail] = React.useState("");
-  const [company, setCompany] = React.useState("");
+const Container = styled(View)`
+  flex: 1;
+  padding: 16px;
+`;
 
+const Section = styled(View)`
+  margin-top: 16px;
+`;
+
+const SectionTitle = styled.Text`
+  font-weight: bold;
+  font-size: 16px;
+`;
+
+const Row = styled(View)`
+  flex-direction: row;
+  align-items: center;
+  margin-top: 8px;
+`;
+
+const Label = styled.Text`
+  font-weight: bold;
+  width: 80px;
+`;
+
+const Input = styled.TextInput`
+  flex: 1;
+  padding: 4px;
+  border-width: 1px;
+  border-color: gray;
+  border-radius: 4px;
+`;
+
+const Text = styled.Text`
+  flex: 1;
+`;
+
+const ProfileScreen = ({ navigation }) => {
   // const navigation = useNavigation();
+  const [isEditingName, setIsEditingName] = useState(false);
+  const [isEditingEmail, setIsEditingEmail] = useState(false);
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [company, setCompany] = useState("");
 
-  React.useEffect(() => {
+  useEffect(() => {
     const getProfileData = async () => {
       const profileData = await AsyncStorage.getItem(PROFILE_KEY);
       if (profileData) {
@@ -55,16 +86,16 @@ export const ProfileScreen = ({ navigation }) => {
     await AsyncStorage.setItem(PROFILE_KEY, JSON.stringify(profileData));
   };
 
-  React.useEffect(() => {
+  useEffect(() => {
     handleSave();
   }, [name, email, company]);
 
   return (
-    <View style={styles.container}>
-      <View style={styles.section}>
-        <Text style={styles.sectionTitle}>Personal Information</Text>
-        <View style={styles.row}>
-          <Text style={styles.label}>Name:</Text>
+    <Container>
+      <Section>
+        <SectionTitle>Personal Information</SectionTitle>
+        <Row>
+          <Label>Name:</Label>
           {isEditingName ? (
             <TextInput
               style={styles.input}
@@ -74,12 +105,12 @@ export const ProfileScreen = ({ navigation }) => {
             />
           ) : (
             <TouchableOpacity onPress={handleEditName}>
-              <Text style={styles.text}>{name}</Text>
+              <Text>{name}</Text>
             </TouchableOpacity>
           )}
-        </View>
-        <View style={styles.row}>
-          <Text style={styles.label}>Email:</Text>
+        </Row>
+        <Row>
+          <Label>Email:</Label>
           {isEditingEmail ? (
             <TextInput
               style={styles.input}
@@ -89,61 +120,28 @@ export const ProfileScreen = ({ navigation }) => {
             />
           ) : (
             <TouchableOpacity onPress={handleEditEmail}>
-              <Text style={styles.text}>{email}</Text>
+              <Text>{email}</Text>
             </TouchableOpacity>
           )}
-        </View>
-      </View>
-      <View style={styles.section}>
-        <Text style={styles.sectionTitle}>Work Information</Text>
-        <View style={styles.row}>
-          <Text style={styles.label}>Company:</Text>
+        </Row>
+      </Section>
+      <Section>
+        <SectionTitle>Work Information</SectionTitle>
+        <Row>
+          <Label>Company:</Label>
           <TouchableOpacity onPress={handleEditCompany}>
-            <Text style={styles.text}>{company}</Text>
+            <Text>{company}</Text>
           </TouchableOpacity>
-        </View>
-      </View>
-      <View style={styles.section}>
-        <Text style={styles.sectionTitle}>Survey Answers</Text>
-        <View style={styles.row}>
+        </Row>
+      </Section>
+      <Section>
+        <SectionTitle>Survey Answers</SectionTitle>
+        <Row>
           <TouchableOpacity onPress={handleEditAnswers}>
-            <Text style={styles.text}>Edit Answers</Text>
+            <Text>Edit Answers</Text>
           </TouchableOpacity>
-        </View>
-      </View>
-    </View>
+        </Row>
+      </Section>
+    </Container>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    padding: 16,
-  },
-  section: {
-    marginTop: 16,
-  },
-  sectionTitle: {
-    fontWeight: "bold",
-    fontSize: 16,
-  },
-  row: {
-    flexDirection: "row",
-    alignItems: "center",
-    marginTop: 8,
-  },
-  label: {
-    fontWeight: "bold",
-    width: 80,
-  },
-  input: {
-    flex: 1,
-    padding: 4,
-    borderWidth: 1,
-    borderColor: "gray",
-    borderRadius: 4,
-  },
-  text: {
-    flex: 1,
-  },
-});

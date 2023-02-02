@@ -1,11 +1,12 @@
-import React, { useState } from "react";
 import {
+  Button,
   ScrollView,
   Text,
   TextInput,
   TouchableOpacity,
   View,
 } from "react-native";
+import React, { useState } from "react";
 
 const companies = [
   { name: "Apple", available: true },
@@ -62,6 +63,12 @@ export const CompanySelectScreen = ({ navigation }) => {
             )}
           </View>
         ))}
+        <Button
+          title={"Next"}
+          onPress={() => {
+            navigation.navigate("Profile");
+          }}
+        />
       </ScrollView>
     </View>
   );
