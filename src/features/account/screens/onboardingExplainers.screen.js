@@ -26,13 +26,6 @@ const onboardingScreens = [
     text: "Screen 4 Text",
     image: require("../../../../assets/pic_4.jpg"),
   },
-  // {
-  //   id: 5,
-  //   title: "Screen 5 Title",
-  //   text: "Screen 5 Text",
-  //   image: require("./screen5.png"),
-  // },
-  //...
 ];
 
 export const OnboardingExplainersScreen = ({ navigation }) => {
@@ -52,7 +45,7 @@ export const OnboardingExplainersScreen = ({ navigation }) => {
         <View>
           <Text>{onboardingScreens[currentScreen].title}</Text>
           <Text>{onboardingScreens[currentScreen].text}</Text>
-          {/* <Image source={onboardingScreens[currentScreen].image} /> */}
+          <Image source={onboardingScreens[currentScreen].image} />
           <Button title="Next" onPress={handleNext} />
           <Button title="Skip" onPress={handleSkip} />
         </View>

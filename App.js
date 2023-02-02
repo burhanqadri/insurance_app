@@ -9,10 +9,13 @@ import { StyleSheet, Text, View } from "react-native";
 
 import { Navigation } from "./src/infrastructure/navigation";
 import { StatusBar } from "expo-status-bar";
+import { ThemeProvider } from "styled-components/native";
+import { UserDataContextProvider } from "./src/services/userData/userData.context";
+import { onError } from "@apollo/client/link/error";
+import { theme } from "./src/infrastructure/theme";
 
 // ********************************
 const httpLink = new HttpLink({
-  // uri: "http://ec2-18-217-139-78.us-east-2.compute.amazonaws.com:3000/graphql",
   uri: "https://getdrop.info/graphql",
 });
 
@@ -36,7 +39,14 @@ const client = new ApolloClient({
 export default function App() {
   return (
     <>
-      <Navigation />
+      <ApolloProvider client={client}>
+        <ThemeProvider theme={theme}>
+          <UserDataContextProvider>
+            <Navigation />
+          </UserDataContextProvider>
+        </ThemeProvider>
+      </ApolloProvider>
+      <StatusBar style="auto" />
     </>
   );
 }
