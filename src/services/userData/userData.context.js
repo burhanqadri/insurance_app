@@ -79,12 +79,26 @@ export const UserDataContextProvider = ({ children }) => {
     // return data;
   }
 
+  async function func_updateUser(userFilter) {
+    return;
+    // try {
+    //   await do_updateUser({
+    //     variables: { uid, ...userFilter },
+    //   });
+    // } catch (error) {
+    //   console.log("ERROR in updateUser", error);
+    // }
+
+    // //refetch user
+    // await func_getThisUser();
+  }
+
   return (
     <UserDataContext.Provider
       value={{
         func_addUser,
         func_getThisUser,
-        // func_updateUser,
+        func_updateUser,
       }}
     >
       {children}

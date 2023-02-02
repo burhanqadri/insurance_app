@@ -1,7 +1,14 @@
-import { Button, ScrollView, Text, View } from "react-native";
+import {
+  Button,
+  IconButton,
+  Searchbar,
+  Text,
+  TextInput,
+} from "react-native-paper";
 import React, { useState } from "react";
+import { ScrollView, View } from "react-native";
 
-import styled from "styled-components/native";
+import { Ionicons } from "@expo/vector-icons";
 
 const companies = [
   { name: "Apple", available: true },
@@ -12,40 +19,6 @@ const companies = [
   { name: "Uber", available: false },
   { name: "Zoom", available: true },
 ];
-
-const Container = styled.View`
-  padding: 16px;
-`;
-
-const SearchInput = styled.TextInput`
-  height: 40px;
-  border-color: gray;
-  border-width: 1px;
-  margin-top: 16px;
-  padding: 8px;
-  border-radius: 8px;
-`;
-
-const CompanyContainer = styled.View`
-  margin-bottom: 16px;
-`;
-
-const CompanyText = styled.Text`
-  font-size: 20px;
-  padding: 16px;
-  border-radius: 8px;
-`;
-
-const CompanyButton = styled.TouchableOpacity`
-  padding: 8px;
-  margin-top: 8px;
-  background-color: lightgray;
-  border-radius: 8px;
-`;
-
-const NextButton = styled.Button`
-  margin-top: 16px;
-`;
 
 export const CompanySelectScreen = ({ navigation }) => {
   const [searchTerm, setSearchTerm] = useState("");
@@ -60,42 +33,53 @@ export const CompanySelectScreen = ({ navigation }) => {
   };
 
   return (
-    <Container>
-      <SearchInput
+    <>
+      <Searchbar
         placeholder="Search for a company"
         onChangeText={handleSearch}
         value={searchTerm}
       />
-      <ScrollView>
+      <ScrollView style={{ padding: 16 }}>
         {filteredCompanies.map((company, index) => (
-          <CompanyContainer key={index}>
-            {company.available ? (
-              <CompanyButton
-                onPress={() => console.log(`Selected ${company.name}`)}
+          <View
+            key={index}
+            style={{
+              flexDirection: "row",
+              alignItems: "center",
+              marginBottom: 16,
+            }}
+          >
+            <Ionicons
+              name="md-business"
+              size={24}
+              color="gray"
+              style={{ marginRight: 16 }}
+            />
+            <View style={{ flex: 1 }}>
+              <Text style={{ fontSize: 20 }}>{company.name}</Text>
+            </View>
+            {!company.available && (
+              <Button
+                mode="contained"
+                color="#3498db"
+                style={{ borderRadius: 8, paddingHorizontal: 16 }}
+                onPress={() => console.log(`Requested to add ${company.name}`)}
               >
-                <CompanyText>{company.name}</CompanyText>
-              </CompanyButton>
-            ) : (
-              <CompanyContainer>
-                <CompanyText>{company.name}</CompanyText>
-                <CompanyButton
-                  onPress={() =>
-                    console.log(`Requested to add ${company.name}`)
-                  }
-                >
-                  <CompanyText>Request to add</CompanyText>
-                </CompanyButton>
-              </CompanyContainer>
+                Request to add
+              </Button>
             )}
-          </CompanyContainer>
+          </View>
         ))}
-        <NextButton
-          title={"Next"}
+        <Button
+          mode="contained"
+          style={{ marginTop: 16 }}
           onPress={() => {
             navigation.navigate("Profile");
           }}
-        />
+        >
+          Next
+        </Button>
       </ScrollView>
-    </Container>
+    </>
   );
 };
