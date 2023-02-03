@@ -21,7 +21,7 @@ export const AccountNavigator = () => (
       headerBackVisible: false,
     }}
   >
-    {/* <Stack.Screen name="Glossary" component={GlossaryScreen} /> */}
+    <Stack.Screen name="PhoneLogin" component={PhoneLoginScreen} />
     <Stack.Screen
       name="OnboardingExplainers"
       component={OnboardingExplainersScreen}

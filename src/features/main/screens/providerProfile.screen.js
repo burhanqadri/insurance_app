@@ -20,7 +20,7 @@ export const ProviderProfileScreen = ({ navigation }) => {
       headerLeft: () => (
         <TouchableOpacity
           onPress={() => {
-            navigation.navigate("PlanOverview");
+            navigation.navigate("ServiceDetail");
           }}
         >
           <Ionicons name="arrow-back" size={24} color="black" />

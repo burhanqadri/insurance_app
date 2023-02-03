@@ -6,10 +6,25 @@ import {
   Paragraph,
   Title,
 } from "react-native-paper";
-import { FlatList, Text, View } from "react-native";
+import { FlatList, Text, TouchableOpacity, View } from "react-native";
 import React, { useState } from "react";
 
+import { Ionicons } from "@expo/vector-icons";
+
 export const ServiceDetailScreen = ({ navigation, route }) => {
+  React.useLayoutEffect(() => {
+    navigation.setOptions({
+      headerLeft: () => (
+        <TouchableOpacity
+          onPress={() => {
+            navigation.navigate("PlanOverview");
+          }}
+        >
+          <Ionicons name="arrow-back" size={24} color="black" />
+        </TouchableOpacity>
+      ),
+    });
+  }, []);
   const [isLoading, setIsLoading] = useState(true);
   const [claims, setClaims] = useState([]);
   const [isEditing, setIsEditing] = useState(false);
@@ -79,6 +94,7 @@ export const ServiceDetailScreen = ({ navigation, route }) => {
       <View style={{ padding: 20 }}>
         <Button
           mode="contained"
+          title="Find Providers"
           onPress={() => navigation.navigate("ProviderList", { serviceName })}
         />
       </View>

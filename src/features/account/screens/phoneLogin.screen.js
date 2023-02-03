@@ -5,7 +5,7 @@ import React, { useState } from "react";
 
 import { useFirebase } from "../../../services/firebase/firebase.context";
 
-export const PhoneSignIn = ({ navigation }) => {
+export const PhoneLoginScreen = ({ navigation }) => {
   const [phoneNumber, setPhoneNumber] = useState("");
   const [verificationCode, setVerificationCode] = useState("");
   const [confirmationResult, setConfirmationResult] = useState(null);
