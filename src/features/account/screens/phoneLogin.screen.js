@@ -2,6 +2,7 @@ import "firebase/auth";
 
 import { ActivityIndicator, Button, TextInput } from "react-native-paper";
 import React, { useState } from "react";
+import { StyleSheet, Text, View } from "react-native";
 
 import { useFirebase } from "../../../services/firebase/firebase.context";
 

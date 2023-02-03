@@ -9,7 +9,6 @@ import { colors } from "../../infrastructure/theme/colors";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
-// import { LearnNavigator } from "./learn.navigator";
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
 

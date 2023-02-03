@@ -15,7 +15,20 @@ import { UserDataContextProvider } from "./src/services/userData/userData.contex
 import { onError } from "@apollo/client/link/error";
 import { theme } from "./src/infrastructure/theme";
 
-// ********************************
+// FIREBASE ********************************
+const firebaseConfig = {
+  apiKey: "AIzaSyA-k-xZiHDE7kMpb8PM5XKfyIoBmIriGug",
+  authDomain: "insurance-app-583d1.firebaseapp.com",
+  projectId: "insurance-app-583d1",
+  storageBucket: "insurance-app-583d1.appspot.com",
+  messagingSenderId: "701603437103",
+  appId: "1:701603437103:web:f5fe6a0f1303bd329904da",
+  measurementId: "G-BFRZCDF00R",
+};
+
+initializeApp(firebaseConfig);
+
+// APOLLO ********************************
 const httpLink = new HttpLink({
   uri: "https://getdrop.info/graphql",
 });
@@ -37,6 +50,7 @@ const client = new ApolloClient({
   cache: new InMemoryCache({ resultCaching: false }), //TO DO fix the caching
 });
 
+// RETURN ********************************
 export default function App() {
   return (
     <>

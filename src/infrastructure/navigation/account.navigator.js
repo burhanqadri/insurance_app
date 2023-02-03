@@ -2,6 +2,7 @@ import { CompanySelectScreen } from "../../features/settings/screens/companySele
 import { Header } from "../../components/header/header.component";
 import { OnboardingExplainersScreen } from "../../features/account/screens/onboardingExplainers.screen";
 import { OnboardingQuestionsScreen } from "../../features/account/screens/onboardingQuestions.screen";
+import { PhoneLoginScreen } from "../../features/account/screens/phoneLogin.screen";
 import React from "react";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
@@ -15,9 +16,6 @@ export const AccountNavigator = () => (
       },
       headerTitle: (props) => <Header />,
       headerShadowVisible: false,
-      // headerStyle: {
-      //   backgroundColor: "#fd2ff9",
-      // },
       headerBackVisible: false,
     }}
   >
