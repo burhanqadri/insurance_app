@@ -6,6 +6,7 @@ import {
   from,
 } from "@apollo/client";
 import { StyleSheet, Text, View } from "react-native";
+import { getApps, initializeApp } from "firebase/app";
 
 import { FirebaseProvider } from "./src/services/firebase/firebase.context";
 import { Navigation } from "./src/infrastructure/navigation";
@@ -26,8 +27,9 @@ const firebaseConfig = {
   measurementId: "G-BFRZCDF00R",
 };
 
-initializeApp(firebaseConfig);
-
+if (!getApps().length) {
+  initializeApp(firebaseConfig);
+}
 // APOLLO ********************************
 const httpLink = new HttpLink({
   uri: "https://getdrop.info/graphql",
