@@ -1,4 +1,5 @@
 import { FontAwesome5 } from "@expo/vector-icons";
+import { GlossaryScreen } from "../../features/learn/screens/glossary.screen";
 import { Header } from "../../components/header/header.component";
 import { LearnScreen } from "../../features/learn/screens/learn.screen";
 import React from "react";
@@ -20,6 +21,6 @@ export const LearnNavigator = () => (
     }}
   >
     <Stack.Screen name="Learn" component={LearnScreen} />
-    {/* <Stack.Screen name="ProviderDetail" component={ProviderDetailScreen} /> */}
+    <Stack.Screen name="Glossary" component={GlossaryScreen} />
   </Stack.Navigator>
 );

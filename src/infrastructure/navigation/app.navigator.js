@@ -2,6 +2,7 @@ import React, { useContext, useEffect } from "react";
 
 import { Header } from "../../components/header/header.component";
 import { Ionicons } from "@expo/vector-icons";
+import { LearnNavigator } from "./learn.navigator";
 import { MainNavigator } from "./main.navigator";
 import { ProfileScreen } from "../../features/account/screens/profile.screen";
 import { colors } from "../../infrastructure/theme/colors";
@@ -39,7 +40,7 @@ function Tabs() {
   return (
     <Tab.Navigator screenOptions={createScreenOptions}>
       <Tab.Screen name="HomeTab" component={MainNavigator} />
-      {/* <Tab.Screen name="LearnTab" component={LearnNavigator} /> */}
+      <Tab.Screen name="LearnTab" component={LearnNavigator} />
     </Tab.Navigator>
   );
 }

@@ -1,13 +1,33 @@
 import { Avatar, Chip, Paragraph, Text, Title } from "react-native-paper";
-import { Image, ScrollView, StyleSheet, View } from "react-native";
+import {
+  Image,
+  ScrollView,
+  StyleSheet,
+  TouchableOpacity,
+  View,
+} from "react-native";
 
+import { Ionicons } from "@expo/vector-icons";
 import React from "react";
-import { SafeArea } from "../../components/container/safeArea.component";
+import { SafeArea } from "../../../components/container/safeArea.component";
 
-const ProviderProfile = () => {
+export const ProviderProfileScreen = ({ navigation }) => {
+  React.useLayoutEffect(() => {
+    navigation.setOptions({
+      headerLeft: () => (
+        <TouchableOpacity
+          onPress={() => {
+            navigation.navigate("PlanOverview");
+          }}
+        >
+          <Ionicons name="arrow-back" size={24} color="black" />
+        </TouchableOpacity>
+      ),
+    });
+  }, []);
   return (
     <SafeArea>
-      <ScrollView>
+      <ScrollView style={{ marginHorizontal: 10 }}>
         <View style={styles.headerContainer}>
           <Image
             style={styles.headerBackground}

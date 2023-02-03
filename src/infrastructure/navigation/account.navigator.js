@@ -1,5 +1,4 @@
 import { CompanySelectScreen } from "../../features/account/screens/companySelect.screen";
-import { GlossaryScreen } from "../../features/learn/screens/glossary.screen";
 import { Header } from "../../components/header/header.component";
 import { OnboardingExplainersScreen } from "../../features/account/screens/onboardingExplainers.screen";
 import { OnboardingQuestionsScreen } from "../../features/account/screens/onboardingQuestions.screen";
@@ -23,7 +22,7 @@ export const AccountNavigator = () => (
       headerBackVisible: false,
     }}
   >
-    <Stack.Screen name="Glossary" component={GlossaryScreen} />
+    {/* <Stack.Screen name="Glossary" component={GlossaryScreen} /> */}
     <Stack.Screen
       name="OnboardingExplainers"
       component={OnboardingExplainersScreen}

@@ -3,23 +3,7 @@ import "firebase/auth";
 import { ActivityIndicator, Button, TextInput } from "react-native-paper";
 import React, { useState } from "react";
 
-import firebase from "firebase/app";
-import { initializeApp } from "firebase/app";
 import { useFirebase } from "../../../services/firebase/firebase.context";
-
-// import { getAnalytics } from "firebase/analytics";
-
-const firebaseConfig = {
-  apiKey: "AIzaSyA-k-xZiHDE7kMpb8PM5XKfyIoBmIriGug",
-  authDomain: "insurance-app-583d1.firebaseapp.com",
-  projectId: "insurance-app-583d1",
-  storageBucket: "insurance-app-583d1.appspot.com",
-  messagingSenderId: "701603437103",
-  appId: "1:701603437103:web:f5fe6a0f1303bd329904da",
-  measurementId: "G-BFRZCDF00R",
-};
-
-firebase.initializeApp(firebaseConfig);
 
 export const PhoneSignIn = ({ navigation }) => {
   const [phoneNumber, setPhoneNumber] = useState("");

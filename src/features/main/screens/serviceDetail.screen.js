@@ -9,7 +9,7 @@ import {
 import { FlatList, Text, View } from "react-native";
 import React, { useState } from "react";
 
-export const InsuranceServiceDetails = ({ navigation, route }) => {
+export const ServiceDetailScreen = ({ navigation, route }) => {
   const [isLoading, setIsLoading] = useState(true);
   const [claims, setClaims] = useState([]);
   const [isEditing, setIsEditing] = useState(false);
