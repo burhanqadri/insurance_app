@@ -7,6 +7,7 @@ import {
 } from "@apollo/client";
 import { StyleSheet, Text, View } from "react-native";
 
+import { FirebaseProvider } from "../src/services/firebase/firebase.context";
 import { Navigation } from "./src/infrastructure/navigation";
 import { StatusBar } from "expo-status-bar";
 import { ThemeProvider } from "styled-components/native";
@@ -40,11 +41,13 @@ export default function App() {
   return (
     <>
       <ApolloProvider client={client}>
-        <ThemeProvider theme={theme}>
-          <UserDataContextProvider>
-            <Navigation />
-          </UserDataContextProvider>
-        </ThemeProvider>
+        <FirebaseProvider>
+          <ThemeProvider theme={theme}>
+            <UserDataContextProvider>
+              <Navigation />
+            </UserDataContextProvider>
+          </ThemeProvider>
+        </FirebaseProvider>
       </ApolloProvider>
       <StatusBar style="auto" />
     </>
