@@ -79,7 +79,7 @@ export const PlanOverviewScreen = ({ navigation }) => {
       headerLeft: () => (
         <TouchableOpacity
           onPress={() => {
-            navigation.navigate("AccountNavigator", { screen: "Profile" });
+            navigation.navigate("Profile");
           }}
         >
           <FontAwesome name="user-circle-o" size={24} color="black" />

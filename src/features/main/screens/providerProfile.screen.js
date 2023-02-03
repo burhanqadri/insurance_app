@@ -1,15 +1,18 @@
-import { Avatar, Chip, Paragraph, Text, Title } from "react-native-paper";
 import {
-  Image,
-  ScrollView,
-  StyleSheet,
-  TouchableOpacity,
-  View,
-} from "react-native";
+  Avatar,
+  Card,
+  Chip,
+  Paragraph,
+  Subheading,
+  Title,
+} from "react-native-paper";
+import { Image, ScrollView, Text, TouchableOpacity, View } from "react-native";
 
 import { Ionicons } from "@expo/vector-icons";
 import React from "react";
 import { SafeArea } from "../../../components/container/safeArea.component";
+
+// import { SafeAreaView } from "react-native-safe-area-context";
 
 export const ProviderProfileScreen = ({ navigation }) => {
   React.useLayoutEffect(() => {
@@ -26,126 +29,112 @@ export const ProviderProfileScreen = ({ navigation }) => {
     });
   }, []);
   return (
+    // <SafeAreaView style={{ flex: 1 }}>
     <SafeArea>
-      <ScrollView style={{ marginHorizontal: 10 }}>
-        <View style={styles.headerContainer}>
+      <ScrollView
+        style={{ paddingHorizontal: 20, paddingTop: 20 }}
+        showsVerticalScrollIndicator={false}
+      >
+        <View style={{ flexDirection: "row" }}>
           <Image
-            style={styles.headerBackground}
+            style={{ width: 128, height: 128, borderRadius: 64 }}
             source={{
-              uri: "https://images.unsplash.com/photo-1580595456730-64f69c7d0d57?ixlib=rb-1.2.1&auto=format&fit=crop&w=334&q=80",
+              uri: "https://randomuser.me/api/portraits/women/44.jpg",
             }}
           />
-          <View style={styles.headerColumn}>
-            <Avatar.Image
-              style={styles.avatar}
-              source={{
-                uri: "https://randomuser.me/api/portraits/women/44.jpg",
-              }}
-            />
-            <Title style={styles.name}>Dr. Sarah Johnson</Title>
-            <Paragraph style={styles.phone}>Phone: +1 (123) 456-7890</Paragraph>
-            <View style={styles.providerInfo}>
-              <Chip style={styles.chip}>Massage Therapist</Chip>
-              <Chip style={styles.chip}>New York City</Chip>
-              <Chip style={styles.chip}>In Network</Chip>
+          <View style={{ marginLeft: 20 }}>
+            <Title>Dr. Sarah Johnson</Title>
+            <Subheading style={{ fontWeight: "bold" }}>
+              Phone: +1 (123) 456-7890
+            </Subheading>
+            <Subheading>Address: 123 Main St, New York, NY 10001</Subheading>
+            <View style={{ flexDirection: "row", marginTop: 20 }}>
+              <Chip mode="outlined" style={{ marginRight: 10 }}>
+                Massage Therapist
+              </Chip>
+              <Chip mode="outlined" style={{ marginRight: 10 }}>
+                New York City
+              </Chip>
+              <Chip mode="outlined">In Network</Chip>
             </View>
           </View>
         </View>
-        <View style={styles.infoContainer}>
-          <View style={styles.infoColumn}>
-            <Chip style={styles.chip}>Virtual Appointments Possible</Chip>
-            <Chip style={styles.chip}>Handles Reimbursement Filing</Chip>
-          </View>
+        <View
+          style={{
+            marginTop: 20,
+            flexDirection: "row",
+            justifyContent: "space-between",
+          }}
+        >
+          <Chip mode="outlined">Virtual Possible</Chip>
+          <Chip mode="outlined">Handles Claims</Chip>
         </View>
-        <View style={styles.reviewContainer}>
-          <Title style={styles.reviewTitle}>Reviews</Title>
-          <View style={styles.reviewColumn}>
-            <View style={styles.reviewRow}>
-              <Avatar.Image
-                source={{
-                  uri: "https://randomuser.me/api/portraits/women/33.jpg",
-                }}
-                size={40}
-              />
-              <View style={styles.reviewDetails}>
-                <Text style={styles.reviewUsername}>Jane Doe</Text>
-                <Text style={styles.reviewText}>
-                  Dr. Johnson was amazing! She was very kind and understanding.
-                  I highly recommend her!
-                </Text>
-              </View>
-            </View>
-            <View style={styles.reviewRow}>
-              <Avatar.Image
-                source={{
-                  uri: "https://randomuser.me/api/portraits/men/55.jpg",
-                }}
-                size={40}
-              />
-              <View style={styles.reviewDetails}>
-                <Text style={styles.reviewUsername}>John Smith</Text>
-                <Text style={styles.reviewText}>
-                  I had a great experience with Dr. Johnson.
-                </Text>
-              </View>
-            </View>
+        <View style={{ marginTop: 20 }}>
+          <Title>Reviews</Title>
+          <View
+            style={{
+              marginTop: 20,
+              borderRadius: 10,
+              // shadowColor: "#000",
+              // shadowOpacity: 0.1,
+              // shadowRadius: 10,
+              // shadowOffset: { width: 0, height: 2 },
+              // elevation : 2,
+            }}
+          >
+            <Card style={{ marginBottom: 20 }}>
+              <Card.Content>
+                <View
+                  style={{
+                    flexDirection: "row",
+                    alignItems: "center",
+                  }}
+                >
+                  <Avatar.Image
+                    size={48}
+                    source={{
+                      uri: "https://api.adorable.io/avatars/48/abott@adorable.png",
+                    }}
+                  />
+                  <View style={{ marginLeft: 20 }}>
+                    <Subheading>John Doe</Subheading>
+                    <Paragraph>
+                      Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                      sed do eiusmod tempor incididunt ut labore et dolore magna
+                      aliqua.
+                    </Paragraph>
+                  </View>
+                </View>
+              </Card.Content>
+            </Card>
+            <Card style={{ marginBottom: 20 }}>
+              <Card.Content>
+                <View
+                  style={{
+                    flexDirection: "row",
+                    alignItems: "center",
+                  }}
+                >
+                  <Avatar.Image
+                    size={48}
+                    source={{
+                      uri: "https://api.adorable.io/avatars/48/abott@adorable.png",
+                    }}
+                  />
+                  <View style={{ marginLeft: 20 }}>
+                    <Subheading>Jane Doe</Subheading>
+                    <Paragraph>
+                      Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                      sed do eiusmod tempor incididunt ut labore et dolore magna
+                      aliqua.
+                    </Paragraph>
+                  </View>
+                </View>
+              </Card.Content>
+            </Card>
           </View>
         </View>
       </ScrollView>
     </SafeArea>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    padding: 20,
-  },
-  profile: {
-    alignItems: "center",
-  },
-  image: {
-    width: 128,
-    height: 128,
-    borderRadius: 64,
-    marginTop: 20,
-  },
-  name: {
-    fontWeight: "bold",
-    fontSize: 24,
-    marginTop: 20,
-  },
-  detailsContainer: {
-    marginTop: 20,
-    flexDirection: "row",
-    justifyContent: "space-between",
-    width: "100%",
-  },
-  detailsColumn: {
-    width: "50%",
-  },
-  detailsRow: {
-    flexDirection: "row",
-    alignItems: "center",
-    marginVertical: 10,
-  },
-  detailsLabel: {
-    fontWeight: "bold",
-    marginRight: 10,
-  },
-  services: {
-    fontWeight: "bold",
-    fontSize: 18,
-    marginTop: 20,
-  },
-  chipsContainer: {
-    flexDirection: "row",
-    marginTop: 20,
-  },
-  rating: {
-    marginTop: 20,
-  },
-  reviews: {
-    marginTop: 20,
-  },
-});

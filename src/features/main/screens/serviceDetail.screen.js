@@ -15,8 +15,12 @@ export const ServiceDetailScreen = ({ navigation, route }) => {
   const [isEditing, setIsEditing] = useState(false);
   const [selectedClaim, setSelectedClaim] = useState(null);
 
-  const { serviceName, totalAnnualMax, perVisitMax, remainingAmount } =
-    route.params;
+  // const { serviceName, totalAnnualMax, perVisitMax, remainingAmount } =
+  //   route.params;
+  const serviceName = "Physiotherapy";
+  const totalAnnualMax = 1000;
+  const perVisitMax = 60;
+  const remainingAmount = 470;
 
   const renderClaim = ({ item }) => {
     return (

@@ -11,7 +11,7 @@ export const GlossaryScreen = ({ navigation }) => {
       headerLeft: () => (
         <TouchableOpacity
           onPress={() => {
-            navigation.navigate("Main");
+            navigation.navigate("Learn");
           }}
         >
           <Ionicons name="arrow-back" size={24} color="black" />

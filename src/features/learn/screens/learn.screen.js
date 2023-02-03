@@ -1,4 +1,12 @@
 import {
+  Card,
+  IconButton,
+  List,
+  Paragraph,
+  Surface,
+  Text,
+} from "react-native-paper";
+import {
   Dimensions,
   Image,
   ScrollView,
@@ -7,7 +15,6 @@ import {
   View,
 } from "react-native";
 import React, { useState } from "react";
-import { Surface, Text } from "react-native-paper";
 
 const screenWidth = Dimensions.get("window").width;
 
@@ -54,6 +61,7 @@ const StoryModal = ({ story, onClose }) => (
 
 export const LearnScreen = ({ navigation }) => {
   const [selectedStory, setSelectedStory] = useState(null);
+  const [expanded, setExpanded] = useState(false);
 
   return (
     <View style={styles.container}>
@@ -70,6 +78,62 @@ export const LearnScreen = ({ navigation }) => {
           />
         ))}
       </ScrollView>
+      <Card
+        style={styles.cardContainer}
+        onPress={() => navigation.navigate("Glossary")}
+      >
+        <Card.Title title="Glossary" />
+        <Card.Content>
+          <Paragraph>
+            Tap to view the full glossary of terms used in this app.
+          </Paragraph>
+        </Card.Content>
+      </Card>
+      <Card style={styles.cardContainer}>
+        <Card.Title title="Instructions for Filing for Reimbursement" />
+        <Card.Content>
+          <Paragraph>
+            Tap to expand instructions on how to file for reimbursement in this
+            app.
+          </Paragraph>
+        </Card.Content>
+        <Card.Actions>
+          <IconButton
+            icon={expanded ? "chevron-up" : "chevron-down"}
+            color={"#000"}
+            size={20}
+            onPress={() => setExpanded(!expanded)}
+          />
+        </Card.Actions>
+        {expanded && (
+          <List.Accordion
+            title="Steps to file for reimbursement"
+            style={styles.accordionContainer}
+          >
+            <List.Item title="Step 1">
+              <Paragraph>
+                Go to the Reimbursement section in the app and provide the
+                necessary information.
+              </Paragraph>
+            </List.Item>
+            <List.Item title="Step 2">
+              <Paragraph>
+                Attach the required supporting documents and submit the request.
+              </Paragraph>
+            </List.Item>
+            <List.Item title="Step 3">
+              <Paragraph>
+                Wait for the request to be reviewed and approved.
+              </Paragraph>
+            </List.Item>
+            <List.Item title="Step 4">
+              <Paragraph>
+                Receive the reimbursement in the form of payment.
+              </Paragraph>
+            </List.Item>
+          </List.Accordion>
+        )}
+      </Card>
       {selectedStory && (
         <StoryModal
           story={selectedStory}
@@ -79,7 +143,6 @@ export const LearnScreen = ({ navigation }) => {
     </View>
   );
 };
-
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -100,12 +163,13 @@ const styles = StyleSheet.create({
     width: "100%",
     borderRadius: 50,
   },
-  storyRow: {
-    flexDirection: "row",
-    paddingHorizontal: 10,
+  storyTitle: {
+    fontSize: 18,
+    fontWeight: "bold",
     marginTop: 10,
+    textAlign: "center",
   },
-  fullScreenContainer: {
+  modalContainer: {
     position: "absolute",
     top: 0,
     bottom: 0,
@@ -115,8 +179,36 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
   },
-  fullScreenImage: {
-    height: "100%",
-    width: "100%",
+  modalImage: {
+    height: screenWidth,
+    width: screenWidth,
+    resizeMode: "contain",
+  },
+  closeButton: {
+    position: "absolute",
+    top: 20,
+    right: 20,
+    backgroundColor: "white",
+    padding: 10,
+    borderRadius: 20,
+  },
+  closeButtonText: {
+    fontSize: 18,
+    fontWeight: "bold",
+  },
+  cardContainer: {
+    marginHorizontal: 10,
+    marginVertical: 5,
+  },
+  cardAction: {
+    color: "#ff5a",
+    fontWeight: "bold",
+    textAlign: "right",
+  },
+  expandButton: {
+    alignSelf: "flex-end",
+  },
+  instructionsContainer: {
+    padding: 10,
   },
 });

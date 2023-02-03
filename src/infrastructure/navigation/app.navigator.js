@@ -4,7 +4,7 @@ import { Header } from "../../components/header/header.component";
 import { Ionicons } from "@expo/vector-icons";
 import { LearnNavigator } from "./learn.navigator";
 import { MainNavigator } from "./main.navigator";
-import { ProfileScreen } from "../../features/account/screens/profile.screen";
+import { ProfileScreen } from "../../features/settings/screens/profile.screen";
 import { colors } from "../../infrastructure/theme/colors";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";

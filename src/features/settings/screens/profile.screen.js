@@ -18,7 +18,7 @@ export const ProfileScreen = ({ navigation }) => {
       headerLeft: () => (
         <TouchableOpacity
           onPress={() => {
-            navigation.navigate("Main");
+            navigation.navigate("PlanOverview");
           }}
         >
           <Ionicons name="arrow-back" size={24} color="black" />

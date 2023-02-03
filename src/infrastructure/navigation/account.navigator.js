@@ -1,8 +1,7 @@
-import { CompanySelectScreen } from "../../features/account/screens/companySelect.screen";
+import { CompanySelectScreen } from "../../features/settings/screens/companySelect.screen";
 import { Header } from "../../components/header/header.component";
 import { OnboardingExplainersScreen } from "../../features/account/screens/onboardingExplainers.screen";
 import { OnboardingQuestionsScreen } from "../../features/account/screens/onboardingQuestions.screen";
-import { ProfileScreen } from "../../features/account/screens/profile.screen";
 import React from "react";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
@@ -32,7 +31,5 @@ export const AccountNavigator = () => (
       name="OnboardingQuestions"
       component={OnboardingQuestionsScreen}
     />
-
-    <Stack.Screen name="Profile" component={ProfileScreen} />
   </Stack.Navigator>
 );
