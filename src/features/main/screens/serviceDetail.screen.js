@@ -15,6 +15,7 @@ import {
 } from "react-native";
 import React, { useState } from "react";
 
+import { ClaimForm } from "../components/claimForm.component";
 import { Ionicons } from "@expo/vector-icons";
 
 export const ServiceDetailScreen = ({ navigation, route }) => {
@@ -33,7 +34,7 @@ export const ServiceDetailScreen = ({ navigation, route }) => {
     });
   }, []);
 
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
   const [claims, setClaims] = useState([]);
   const [isEditing, setIsEditing] = useState(false);
   const [selectedClaim, setSelectedClaim] = useState(null);
@@ -111,7 +112,7 @@ export const ServiceDetailScreen = ({ navigation, route }) => {
         </View>
       )}
       {isEditing ? (
-        <NewClaimForm
+        <ClaimForm
           onSubmit={handleSubmit}
           onCancel={() => setIsEditing(false)}
           selectedClaim={selectedClaim}

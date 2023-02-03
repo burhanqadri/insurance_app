@@ -2,6 +2,7 @@ import {
   ActivityIndicator,
   Animated,
   Image,
+  StyleSheet,
   Text,
   TextInput,
   TouchableOpacity,
@@ -146,22 +147,26 @@ export const PhoneLoginScreen = ({ navigation }) => {
             </View>
           ) : (
             <View>
-              <Text style={{ backgroundColor: "red" }}>Verification</Text>
-              <Image
-                style={{ backgroundColor: "red" }}
-                source={"https://randomuser.me/api/portraits/women/44.jpg"}
-              />
-              <Text style={{ backgroundColor: "red" }}>
-                Please enter the verification code{"\n"}
-                we sent to your phone number
-              </Text>
-
-              <TextInput
-                value={verificationCode}
-                onChangeText={setVerificationCode}
-                keyboardType="number-pad"
-                textContentType="oneTimeCode"
-              />
+              <View style={styles.container}>
+                <Text style={styles.headerText}>Verification</Text>
+                <Image
+                  source={{
+                    uri: "https://randomuser.me/api/portraits/women/44.jpg",
+                  }}
+                  style={styles.image}
+                />
+                <Text style={styles.instructionsText}>
+                  Please enter the verification code{"\n"}
+                  we sent to your phone number
+                </Text>
+                <TextInput
+                  style={styles.input}
+                  value={verificationCode}
+                  onChangeText={setVerificationCode}
+                  keyboardType="number-pad"
+                  textContentType="oneTimeCode"
+                />
+              </View>
               {verificationCode ? (
                 <Button
                   onPress={async () => {
@@ -194,3 +199,35 @@ export const PhoneLoginScreen = ({ navigation }) => {
     </SafeArea>
   );
 };
+
+const styles = StyleSheet.create({
+  container: {
+    alignItems: "center",
+    padding: 20,
+  },
+  headerText: {
+    fontSize: 24,
+    fontWeight: "bold",
+    marginVertical: 20,
+  },
+  image: {
+    width: 100,
+    height: 100,
+    borderRadius: 50,
+    marginVertical: 20,
+  },
+  instructionsText: {
+    fontSize: 16,
+    textAlign: "center",
+    marginVertical: 20,
+  },
+  input: {
+    borderWidth: 1,
+    borderColor: "#ccc",
+    padding: 10,
+    width: 200,
+    fontSize: 16,
+    marginVertical: 20,
+    textAlign: "center",
+  },
+});
