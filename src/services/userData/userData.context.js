@@ -5,20 +5,66 @@ import {
   GET_USER_BY,
   UPDATE_USER,
 } from "./queries/users.queries";
+
+import {
+  ADD_NEW_USER,
+  GET_USER_BY,
+  UPDATE_USER,
+} from "./queries/company.queries";
+
+import {
+  ADD_NEW_USER,
+  GET_USER_BY,
+  UPDATE_USER,
+} from "./queries/provider.queries";
+
+import {
+  ADD_NEW_USER,
+  GET_USER_BY,
+  UPDATE_USER,
+} from "./queries/claim.queries";
+
 import { AppState, StyleSheet, Text, View } from "react-native";
 import React, { createContext, useEffect, useRef, useState } from "react";
-import { req_addUser, req_getThisUser } from "./requests/users.requests";
+import { req_createUser, req_getUser } from "./requests/users.requests";
+// import { req_createUser, req_getUser } from "./requests/company.requests";
+// import { req_createUser, req_getUser } from "./requests/provider.requests";
+// import { req_createUser, req_getUser } from "./requests/claim.requests";
+
 import { useLazyQuery, useMutation, useQuery } from "@apollo/client";
 
 // ****************************************
 export const UserDataContext = createContext();
 
 export const UserDataContextProvider = ({ children }) => {
-  // const [get_thisUser] = useLazyQuery(GET_USER_BY, {
+  // const [get_User] = useLazyQuery(GET_USER_BY, {
   //   fetchPolicy: "network-only",
   // });
-  // const [do_addUser, {}] = useMutation(ADD_NEW_USER);
+  // const [do_createUser, {}] = useMutation(CREATE_USER);
   // const [do_updateUser, {}] = useMutation(UPDATE_USER);
+
+  // const [get_Company] = useLazyQuery(GET_COMPANY_BY, {
+  //   fetchPolicy: "network-only",
+  // });
+  // const [get_AllCompanies] = useLazyQuery(GET_COMPANIES_BY, {
+  //   fetchPolicy: "network-only",
+  // });
+
+  // const [get_Provider] = useLazyQuery(GET_PROVIDER_BY, {
+  //   fetchPolicy: "network-only",
+  // });
+  // const [get_Providers] = useLazyQuery(GET_PROVIDERS_BY, {
+  //   fetchPolicy: "network-only",
+  // });
+
+  // const [get_Claim] = useLazyQuery(GET_CLAIM_BY, {
+  //   fetchPolicy: "network-only",
+  // });
+  // const [get_Claims] = useLazyQuery(GET_CLAIMS_BY, {
+  //   fetchPolicy: "network-only",
+  // });
+  // const [do_createClaim, {}] = useMutation(CREATE_CLAIM);
+  // const [do_updateClaim, {}] = useMutation(UPDATE_CLAIM);
 
   // ************************************************************************************************
   const appState = useRef(AppState.currentState);

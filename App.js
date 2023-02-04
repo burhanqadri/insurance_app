@@ -32,7 +32,7 @@ if (!getApps().length) {
 }
 // APOLLO ********************************
 const httpLink = new HttpLink({
-  uri: "https://getdrop.info/graphql",
+  uri: "https://insuranceapp.herokuapp.com/graphql",
 });
 
 const errorLink = onError(({ graphQLErrors, networkError }) => {

@@ -1,9 +1,11 @@
 import React, { useContext, useEffect } from "react";
 
+import { CompanySelectScreen } from "../../features/settings/screens/companySelect.screen";
 import { Header } from "../../components/header/header.component";
 import { Ionicons } from "@expo/vector-icons";
 import { LearnNavigator } from "./learn.navigator";
 import { MainNavigator } from "./main.navigator";
+import { PlanSelectScreen } from "../../features/settings/screens/planSelect.screen";
 import { ProfileScreen } from "../../features/settings/screens/profile.screen";
 import { colors } from "../../infrastructure/theme/colors";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
@@ -62,6 +64,8 @@ export const AppNavigator = () => {
         options={{ headerShown: false }}
       />
       <Stack.Screen name="Profile" component={ProfileScreen} />
+      <Stack.Screen name="CompanySelect" component={CompanySelectScreen} />
+      <Stack.Screen name="PlanSelect" component={PlanSelectScreen} />
     </Stack.Navigator>
   );
 };
