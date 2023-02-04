@@ -11,8 +11,8 @@ export const Navigation = () => {
   return (
     <NavigationContainer>
       {/* {!loading && user ? <AppNavigator /> : <AccountNavigator />} */}
-      <AccountNavigator />
-      {/* <AppNavigator /> */}
+      {/* <AccountNavigator /> */}
+      <AppNavigator />
     </NavigationContainer>
   );
 };

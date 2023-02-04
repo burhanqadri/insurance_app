@@ -19,12 +19,12 @@ export const AccountNavigator = () => (
       headerBackVisible: false,
     }}
   >
-    <Stack.Screen name="PhoneLogin" component={PhoneLoginScreen} />
-    <Stack.Screen
+    {/* <Stack.Screen name="PhoneLogin" component={PhoneLoginScreen} /> */}
+    {/* <Stack.Screen
       name="OnboardingExplainers"
       component={OnboardingExplainersScreen}
-    />
-    <Stack.Screen name="CompanySelect" component={CompanySelectScreen} />
+    /> */}
+    {/* <Stack.Screen name="CompanySelect" component={CompanySelectScreen} /> */}
     <Stack.Screen
       name="OnboardingQuestions"
       component={OnboardingQuestionsScreen}

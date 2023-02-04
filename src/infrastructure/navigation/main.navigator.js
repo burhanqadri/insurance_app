@@ -21,8 +21,8 @@ export const MainNavigator = () => (
       },
     }}
   >
-    {/* <Stack.Screen name="PlanOverview" component={PlanOverviewScreen} />
-    <Stack.Screen name="ProviderProfile" component={ProviderProfileScreen} /> */}
+    <Stack.Screen name="PlanOverview" component={PlanOverviewScreen} />
+    <Stack.Screen name="ProviderProfile" component={ProviderProfileScreen} />
     <Stack.Screen name="ServiceDetail" component={ServiceDetailScreen} />
   </Stack.Navigator>
 );
