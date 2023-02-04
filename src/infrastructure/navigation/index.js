@@ -6,11 +6,12 @@ import { NavigationContainer } from "@react-navigation/native";
 import { useFirebase } from "../../services/firebase/firebase.context";
 
 export const Navigation = () => {
-  const { user, loading } = useFirebase();
+  const { firebaseUser, loading } = useFirebase();
+  // const { user, loading } = useFirebase();
 
   return (
     <NavigationContainer>
-      {/* {!loading && user ? <AppNavigator /> : <AccountNavigator />} */}
+      {/* {!loading && firebaseUser ? <AppNavigator /> : <AccountNavigator />} */}
       {/* <AccountNavigator /> */}
       <AppNavigator />
     </NavigationContainer>

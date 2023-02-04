@@ -1,36 +1,29 @@
+//@collapse
+
 import * as Notifications from "expo-notifications";
 
-import {
-  ADD_NEW_USER,
-  GET_USER_BY,
-  UPDATE_USER,
-} from "./queries/users.queries";
-
-import {
-  ADD_NEW_USER,
-  GET_USER_BY,
-  UPDATE_USER,
-} from "./queries/company.queries";
-
-import {
-  ADD_NEW_USER,
-  GET_USER_BY,
-  UPDATE_USER,
-} from "./queries/provider.queries";
-
-import {
-  ADD_NEW_USER,
-  GET_USER_BY,
-  UPDATE_USER,
-} from "./queries/claim.queries";
-
 import { AppState, StyleSheet, Text, View } from "react-native";
+import {
+  CREATE_CLAIM,
+  GET_CLAIMS_BY,
+  GET_CLAIM_BY,
+  UPDATE_CLAIM,
+} from "./queries/claim.queries";
+import { CREATE_USER, GET_USER_BY, UPDATE_USER } from "./queries/users.queries";
+import { GET_COMPANIES_BY, GET_COMPANY_BY } from "./queries/company.queries";
+import { GET_PROVIDERS_BY, GET_PROVIDER_BY } from "./queries/provider.queries";
 import React, { createContext, useEffect, useRef, useState } from "react";
+import {
+  req_createClaim,
+  req_getClaim,
+  req_getClaims,
+} from "./requests/claim.requests";
 import { req_createUser, req_getUser } from "./requests/users.requests";
-// import { req_createUser, req_getUser } from "./requests/company.requests";
-// import { req_createUser, req_getUser } from "./requests/provider.requests";
-// import { req_createUser, req_getUser } from "./requests/claim.requests";
-
+import { req_getCompanies, req_getCompany } from "./requests/company.requests";
+import {
+  req_getProvider,
+  req_getProviders,
+} from "./requests/provider.requests";
 import { useLazyQuery, useMutation, useQuery } from "@apollo/client";
 
 // ****************************************
@@ -96,30 +89,12 @@ export const UserDataContextProvider = ({ children }) => {
   //
   // users
   //
-  async function func_addUser() {
+  async function func_createUser() {
     return;
     // await req_addUser({ uid }, do_addHabit, do_addUser, curTime, curUser);
-
-    // await Notifications.cancelAllScheduledNotificationsAsync();
-
-    // await Notifications.scheduleNotificationAsync({
-    //   content: {
-    //     title: "Reminder",
-    //     body: "Fill out your daily reflection",
-    //   },
-    //   trigger: { hour: 8, repeats: true },
-    // });
-
-    // await Notifications.scheduleNotificationAsync({
-    //   content: {
-    //     title: "Reminder",
-    //     body: "Plan your next day",
-    //   },
-    //   trigger: { hour: 20, repeats: true },
-    // });
   }
 
-  async function func_getThisUser(save = true) {
+  async function func_getUser(save = true) {
     return;
     // const data = await req_getThisUser({ uid }, get_thisUser);
     // return data;
@@ -138,13 +113,68 @@ export const UserDataContextProvider = ({ children }) => {
     // //refetch user
     // await func_getThisUser();
   }
+  //
+  // company
+  //
+  async function func_getCompany(save = true) {
+    return;
+    // const data = await req_getThisUser({ uid }, get_thisUser);
+    // return data;
+  }
+  async function func_getCompanies(save = true) {
+    return;
+    // const data = await req_getThisUser({ uid }, get_thisUser);
+    // return data;
+  }
+  //
+  // provider
+  //
+  async function func_getProvider(save = true) {
+    return;
+    // const data = await req_getThisUser({ uid }, get_thisUser);
+    // return data;
+  }
+  async function func_getProviders(save = true) {
+    return;
+    // const data = await req_getThisUser({ uid }, get_thisUser);
+    // return data;
+  }
+  //
+  // claim
+  //
+  async function func_createClaim(save = true) {
+    return;
+    // const data = await req_getThisUser({ uid }, get_thisUser);
+    // return data;
+  }
+  async function func_getClaim(save = true) {
+    return;
+    // const data = await req_getThisUser({ uid }, get_thisUser);
+    // return data;
+  }
+  async function func_getClaims(save = true) {
+    return;
+    // const data = await req_getThisUser({ uid }, get_thisUser);
+    // return data;
+  }
 
   return (
     <UserDataContext.Provider
       value={{
-        func_addUser,
-        func_getThisUser,
+        //
+        func_createUser,
+        func_getUser,
         func_updateUser,
+        //
+        func_getCompany,
+        func_getCompanies,
+        //
+        func_getProviders,
+        func_getProviders,
+        //
+        func_createClaim,
+        func_getClaim,
+        func_getClaims,
       }}
     >
       {children}

@@ -16,12 +16,12 @@ const FirebaseContext = React.createContext(null);
 export const useFirebase = () => React.useContext(FirebaseContext);
 
 export const FirebaseProvider = ({ children }) => {
-  const [user, setUser] = useState(null);
+  const [firebaseUser, setFirebaseUser] = useState(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const unsubscribe = getAuth().onAuthStateChanged(async (user) => {
-      setUser(user);
+    const unsubscribe = getAuth().onAuthStateChanged(async (firebaseUser) => {
+      setFirebaseUser(firebaseUser);
       setLoading(false);
     });
     return () => unsubscribe();
@@ -34,7 +34,7 @@ export const FirebaseProvider = ({ children }) => {
   return (
     <FirebaseContext.Provider
       value={{
-        user,
+        firebaseUser,
         loading,
         logout,
       }}
