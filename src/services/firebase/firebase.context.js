@@ -1,6 +1,6 @@
 import "firebase/auth";
 
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import {
   RecaptchaVerifier,
   getAuth,
@@ -9,6 +9,7 @@ import {
 } from "firebase/auth";
 import firebase, { initializeApp } from "firebase/app";
 
+import { UserDataContext } from "../userData/userData.context";
 import { getAnalytics } from "firebase/analytics";
 
 const FirebaseContext = React.createContext(null);

@@ -5,10 +5,11 @@ import {
   Text,
   TextInput,
 } from "react-native-paper";
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { ScrollView, View } from "react-native";
 
 import { Ionicons } from "@expo/vector-icons";
+import { UserDataContext } from "../../../services/userData/userData.context";
 
 const companies = [
   { name: "Apple", available: true },
@@ -21,6 +22,8 @@ const companies = [
 ];
 
 export const CompanySelectScreen = ({ navigation }) => {
+  // const { func_completeTask, func_getUserTasks } = useContext(UserDataContext);
+
   const [searchTerm, setSearchTerm] = useState("");
   const [filteredCompanies, setFilteredCompanies] = useState(companies);
 

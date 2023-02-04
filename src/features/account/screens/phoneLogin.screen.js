@@ -14,7 +14,7 @@ import {
   getAuth,
   signInWithCredential,
 } from "firebase/auth";
-import React, { useRef, useState } from "react";
+import React, { useContext, useRef, useState } from "react";
 import { getApp, getApps, initializeApp } from "firebase/app";
 
 import { Button } from "react-native-paper";
@@ -23,6 +23,7 @@ import { Ionicons } from "@expo/vector-icons";
 import PhoneInput from "react-native-phone-number-input";
 import { SafeArea } from "../../../components/container/safeArea.component";
 import { Spacer } from "../../../components/spacer/spacer.component";
+import { UserDataContext } from "../../../services/userData/userData.context";
 import styled from "styled-components/native";
 import { useFirebase } from "../../../services/firebase/firebase.context";
 
@@ -65,6 +66,7 @@ const auth = getAuth();
 // **************************************
 export const PhoneLoginScreen = ({ navigation }) => {
   const { loading, setLoading } = useFirebase();
+  // const { func_completeTask, func_getUserTasks } = useContext(UserDataContext);
 
   const [value, setValue] = useState("");
 

@@ -14,7 +14,9 @@ import {
   TouchableOpacity,
   View,
 } from "react-native";
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
+
+import { UserDataContext } from "../../../services/userData/userData.context";
 
 const screenWidth = Dimensions.get("window").width;
 
@@ -60,6 +62,8 @@ const StoryModal = ({ story, onClose }) => (
 );
 
 export const LearnScreen = ({ navigation }) => {
+  // const { func_completeTask, func_getUserTasks } = useContext(UserDataContext);
+
   const [selectedStory, setSelectedStory] = useState(null);
   const [expanded, setExpanded] = useState(false);
 

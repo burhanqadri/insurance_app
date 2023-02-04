@@ -7,10 +7,11 @@ import {
   Title,
 } from "react-native-paper";
 import { Image, ScrollView, Text, TouchableOpacity, View } from "react-native";
+import React, { useContext, useState } from "react";
 
 import { Ionicons } from "@expo/vector-icons";
-import React from "react";
 import { SafeArea } from "../../../components/container/safeArea.component";
+import { UserDataContext } from "../../../services/userData/userData.context";
 
 // import { SafeAreaView } from "react-native-safe-area-context";
 
@@ -28,6 +29,9 @@ export const ProviderProfileScreen = ({ navigation }) => {
       ),
     });
   }, []);
+
+  // const { func_completeTask, func_getUserTasks } = useContext(UserDataContext);
+
   return (
     // <SafeAreaView style={{ flex: 1 }}>
     <SafeArea>

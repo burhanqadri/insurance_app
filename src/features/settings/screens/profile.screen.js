@@ -1,4 +1,5 @@
 import { Card, IconButton, Paragraph, Text, Title } from "react-native-paper";
+import React, { useContext, useState } from "react";
 import {
   ScrollView,
   StyleSheet,
@@ -9,8 +10,8 @@ import {
 
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { Ionicons } from "@expo/vector-icons";
-import React from "react";
 import { SafeArea } from "../../../components/container/safeArea.component";
+import { UserDataContext } from "../../../services/userData/userData.context";
 
 export const ProfileScreen = ({ navigation }) => {
   React.useLayoutEffect(() => {
@@ -26,6 +27,8 @@ export const ProfileScreen = ({ navigation }) => {
       ),
     });
   }, []);
+
+  // const { func_completeTask, func_getUserTasks } = useContext(UserDataContext);
 
   const [editingName, setEditingName] = React.useState(false);
   const [editingEmail, setEditingEmail] = React.useState(false);

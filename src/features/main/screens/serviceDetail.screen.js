@@ -13,10 +13,11 @@ import {
   TouchableOpacity,
   View,
 } from "react-native";
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 
 import { ClaimForm } from "../components/claimForm.component";
 import { Ionicons } from "@expo/vector-icons";
+import { UserDataContext } from "../../../services/userData/userData.context";
 
 export const ServiceDetailScreen = ({ navigation, route }) => {
   React.useLayoutEffect(() => {
@@ -33,6 +34,8 @@ export const ServiceDetailScreen = ({ navigation, route }) => {
       ),
     });
   }, []);
+
+  // const { func_completeTask, func_getUserTasks } = useContext(UserDataContext);
 
   const [isLoading, setIsLoading] = useState(false);
   const [claims, setClaims] = useState([]);

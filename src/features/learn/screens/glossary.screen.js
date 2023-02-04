@@ -1,9 +1,10 @@
 import { Card, Paragraph, Title } from "react-native-paper";
+import React, { useContext } from "react";
 import { ScrollView, Text, TouchableOpacity, View } from "react-native";
 
 import { Ionicons } from "@expo/vector-icons";
-import React from "react";
 import { SafeArea } from "../../../components/container/safeArea.component";
+import { UserDataContext } from "../../../services/userData/userData.context";
 
 export const GlossaryScreen = ({ navigation }) => {
   React.useLayoutEffect(() => {
@@ -19,6 +20,9 @@ export const GlossaryScreen = ({ navigation }) => {
       ),
     });
   }, []);
+
+  // const { func_completeTask, func_getUserTasks } = useContext(UserDataContext);
+
   const [expandedIndex, setExpandedIndex] = React.useState(0);
   const terms = [
     {
