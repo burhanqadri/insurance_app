@@ -89,17 +89,16 @@ export const UserDataContextProvider = ({ children }) => {
   //
   // users
   //
-  async function func_createUser() {
-    return;
-    // await req_addUser({ uid }, do_addHabit, do_addUser, curTime, curUser);
-  }
-
   async function func_getUser(save = true) {
     return;
     // const data = await req_getThisUser({ uid }, get_thisUser);
     // return data;
   }
 
+  async function func_createUser() {
+    return;
+    // await req_addUser({ uid }, do_addHabit, do_addUser, curTime, curUser);
+  }
   async function func_updateUser(userFilter) {
     return;
     // try {
