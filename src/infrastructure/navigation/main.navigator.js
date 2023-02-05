@@ -25,8 +25,8 @@ export const MainNavigator = () => (
       },
     }}
   >
-    <Stack.Screen name="ClaimFormScreen" component={ClaimFormScreen} />
     <Stack.Screen name="ClaimsListScreen" component={ClaimsListScreen} />
+    <Stack.Screen name="ClaimFormScreen" component={ClaimFormScreen} />
     <Stack.Screen name="Feeling" component={FeelingScreen} />
 
     <Stack.Screen name="PlanOverview" component={PlanOverviewScreen} />

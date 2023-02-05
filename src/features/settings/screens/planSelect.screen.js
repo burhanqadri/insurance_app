@@ -4,7 +4,7 @@ import { ScrollView, Text, View } from "react-native";
 
 import { UserDataContext } from "../../../services/userData/userData.context";
 
-export const InsurancePlans = ({ navigation, plans }) => {
+export const PlanSelectScreen = ({ navigation, plans }) => {
   //   React.useLayoutEffect(() => {
   //     navigation.setOptions({
   //       headerLeft: () => (

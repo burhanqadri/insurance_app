@@ -8,19 +8,19 @@ const data = [
     id: 1,
     title: "Anxiety",
     subtitle: "Find peace of mind",
-    image: require("./anxiety.jpg"),
+    image: require("../../../../assets/pic_1.jpg"),
   },
   {
     id: 2,
     title: "Sleep",
     subtitle: "Wake up feeling refreshed",
-    image: require("./sleep.jpg"),
+    image: require("../../../../assets/pic_4.jpg"),
   },
   {
     id: 3,
     title: "Stress",
     subtitle: "Take a deep breath",
-    image: require("./stress.jpg"),
+    image: require("../../../../assets/pic_5.jpg"),
   },
 ];
 
@@ -44,7 +44,7 @@ export const FeelingScreen = ({ navigation }) => {
                   style={{ paddingRight: 16 }}
                 />
               </View>
-              <Image source={item.image} />
+              <Image source={item.image} style={{ maxWith: 100 }} />
             </Card.Content>
           </Card>
         </TouchableOpacity>

@@ -29,6 +29,8 @@ import { useLazyQuery, useMutation, useQuery } from "@apollo/client";
 export const UserDataContext = createContext();
 
 export const UserDataContextProvider = ({ children }) => {
+  const appUserObj = {};
+  const [appUser, setAppUser] = useState(appUserObj);
   // const [get_User] = useLazyQuery(GET_USER_BY, {
   //   fetchPolicy: "network-only",
   // });
@@ -65,6 +67,7 @@ export const UserDataContextProvider = ({ children }) => {
   // Useffect for when to update  *******************************************************************
   useEffect(() => {
     console.log("STARTING");
+    // func_getUser();
     const subscription = AppState.addEventListener(
       "change",
       async (nextAppState) => {
@@ -73,6 +76,7 @@ export const UserDataContextProvider = ({ children }) => {
           nextAppState === "active"
         ) {
           console.log("INSIDE RUNNING");
+          // func_getUser();
         }
 
         appState.current = nextAppState;

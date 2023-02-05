@@ -4,6 +4,33 @@ import React, { useContext, useState } from "react";
 
 import { UserDataContext } from "../../../services/userData/userData.context";
 
+const sampleClaims = [
+  {
+    claimID: 1,
+    amount: 100.0,
+    date: "2022-01-01",
+    reimbursementFiled: true,
+    reimbursementReceived: false,
+    serviceCovered: "Doctor Visit",
+  },
+  {
+    claimID: 2,
+    amount: 200.0,
+    date: "2022-02-01",
+    reimbursementFiled: false,
+    reimbursementReceived: false,
+    serviceCovered: "Prescription",
+  },
+  {
+    claimID: 3,
+    amount: 150.0,
+    date: "2022-03-01",
+    reimbursementFiled: true,
+    reimbursementReceived: true,
+    serviceCovered: "Hospital Stay",
+  },
+];
+
 export const ClaimsListScreen = ({ navigation, claims }) => {
   // React.useLayoutEffect(() => {
   //   navigation.setOptions({
@@ -21,7 +48,7 @@ export const ClaimsListScreen = ({ navigation, claims }) => {
   // const { func_completeTask, func_getUserTasks } = useContext(UserDataContext);
 
   const [searchQuery, setSearchQuery] = useState("");
-  const [filteredClaims, setFilteredClaims] = useState(claims);
+  const [filteredClaims, setFilteredClaims] = useState(sampleClaims);
 
   const onChangeSearch = (query) => {
     setSearchQuery(query);
@@ -44,16 +71,16 @@ export const ClaimsListScreen = ({ navigation, claims }) => {
       />
       <FlatList
         data={filteredClaims}
-        keyExtractor={(claim) => claim.id}
+        keyExtractor={(claim) => claim.claimID}
         renderItem={({ item: claim }) => (
           <Card style={{ marginVertical: 8, borderRadius: 8 }}>
             <Card.Content>
-              <Title>{claim.typeOfService}</Title>
-              <Paragraph>Service Group: {claim.serviceGroup}</Paragraph>
+              <Title>{claim.serviceCovered}</Title>
+              {/* <Paragraph>Service Group: {claim.serviceGroup}</Paragraph> */}
               <Paragraph>Date: {claim.date}</Paragraph>
-              <Paragraph>
+              {/* <Paragraph>
                 Amount Reimbursed: ${claim.amountReimbursed}
-              </Paragraph>
+              </Paragraph> */}
             </Card.Content>
           </Card>
         )}

@@ -1,8 +1,9 @@
+import * as Location from "expo-location";
+
 import { Avatar, Card, Paragraph, Text, Title } from "react-native-paper";
 import { Image, TouchableOpacity, View } from "react-native";
 import React, { useContext, useEffect, useState } from "react";
 
-import Geolocation from "@react-native-community/geolocation";
 import { UserDataContext } from "../../../services/userData/userData.context";
 
 export const ProviderSearchScreen = ({ navigation }) => {
@@ -25,16 +26,18 @@ export const ProviderSearchScreen = ({ navigation }) => {
   const [practitioners, setPractitioners] = useState([]);
 
   useEffect(() => {
-    Geolocation.getCurrentPosition(
-      ({ coords }) => {
-        setLocation({
-          latitude: coords.latitude,
-          longitude: coords.longitude,
-        });
-      },
-      (error) => console.log(error),
-      { enableHighAccuracy: true, timeout: 20000, maximumAge: 1000 }
-    );
+    (async () => {
+      let { status } = await Location.requestPermissionsAsync();
+      if (status !== "granted") {
+        console.log("Permission to access location was denied");
+      }
+
+      let currentLocation = await Location.getCurrentPositionAsync({});
+      setLocation({
+        latitude: currentLocation.coords.latitude,
+        longitude: currentLocation.coords.longitude,
+      });
+    })();
   }, []);
 
   useEffect(() => {
