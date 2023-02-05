@@ -112,3 +112,11 @@ export const UPDATE_CLAIM = gql`
     }
   }
 `;
+
+export const DELETE_CLAIM = gql`
+  mutation ($uid: ID!, $claimID: ID!) {
+    deleteClaim(claimID: $claimID, uid: $uid) {
+      claimID
+    }
+  }
+`;

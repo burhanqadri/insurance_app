@@ -5,6 +5,7 @@ import * as Notifications from "expo-notifications";
 import { AppState, StyleSheet, Text, View } from "react-native";
 import {
   CREATE_CLAIM,
+  DELETE_CLAIM,
   GET_CLAIMS_BY,
   GET_CLAIM_BY,
   UPDATE_CLAIM,
@@ -91,13 +92,13 @@ export const UserDataContextProvider = ({ children }) => {
   //
   async function func_getUser(save = true) {
     return;
-    // const data = await req_getThisUser({ uid }, get_thisUser);
+    // const data = await req_getUser({ uid }, get_User);
     // return data;
   }
 
   async function func_createUser() {
     return;
-    // await req_addUser({ uid }, do_addHabit, do_addUser, curTime, curUser);
+    // await req_addUser({ uid }, do_addHabit, do_createUser, curTime, curUser);
   }
   async function func_updateUser(userFilter) {
     return;
@@ -117,12 +118,12 @@ export const UserDataContextProvider = ({ children }) => {
   //
   async function func_getCompany(save = true) {
     return;
-    // const data = await req_getThisUser({ uid }, get_thisUser);
+    // const data = await req_getUser({ uid }, get_User);
     // return data;
   }
   async function func_getCompanies(save = true) {
     return;
-    // const data = await req_getThisUser({ uid }, get_thisUser);
+    // const data = await req_getUser({ uid }, get_User);
     // return data;
   }
   //
@@ -130,12 +131,12 @@ export const UserDataContextProvider = ({ children }) => {
   //
   async function func_getProvider(save = true) {
     return;
-    // const data = await req_getThisUser({ uid }, get_thisUser);
+    // const data = await req_getUser({ uid }, get_User);
     // return data;
   }
   async function func_getProviders(save = true) {
     return;
-    // const data = await req_getThisUser({ uid }, get_thisUser);
+    // const data = await req_getUser({ uid }, get_User);
     // return data;
   }
   //
@@ -143,17 +144,27 @@ export const UserDataContextProvider = ({ children }) => {
   //
   async function func_createClaim(save = true) {
     return;
-    // const data = await req_getThisUser({ uid }, get_thisUser);
+    // const data = await req_getUser({ uid }, get_User);
+    // return data;
+  }
+  async function func_updateClaim(save = true) {
+    return;
+    // const data = await req_getUser({ uid }, get_User);
+    // return data;
+  }
+  async function func_deleteClaim(save = true) {
+    return;
+    // const data = await req_getUser({ uid }, get_User);
     // return data;
   }
   async function func_getClaim(save = true) {
     return;
-    // const data = await req_getThisUser({ uid }, get_thisUser);
+    // const data = await req_getUser({ uid }, get_User);
     // return data;
   }
   async function func_getClaims(save = true) {
     return;
-    // const data = await req_getThisUser({ uid }, get_thisUser);
+    // const data = await req_getUser({ uid }, get_User);
     // return data;
   }
 
