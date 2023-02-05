@@ -4,7 +4,7 @@ import { StyleSheet, TouchableOpacity, View } from "react-native";
 
 import { Video } from "expo-av";
 
-const VideoPlayer = ({ source }) => {
+export const VideoPlayer = ({ source }) => {
   const [isPlaying, setIsPlaying] = useState(false);
 
   return (

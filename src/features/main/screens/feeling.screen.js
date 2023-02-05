@@ -33,7 +33,7 @@ export const FeelingScreen = ({ navigation }) => {
       {data.map((item) => (
         <TouchableOpacity
           key={item.id}
-          onPress={() => navigation.navigate("Details", { item })}
+          onPress={() => navigation.navigate("ServiceDetail", { item })}
           style={{ margin: 15 }}
         >
           <Card>
