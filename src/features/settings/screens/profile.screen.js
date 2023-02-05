@@ -36,7 +36,7 @@ export const ProfileScreen = ({ navigation }) => {
   const [email, setEmail] = React.useState("johndoe@example.com");
   const [company, setCompany] = React.useState("Acme Inc.");
   const [plan, setPlan] = React.useState("Standard");
-  const [city, setCity] = React.useState("San Francisco");
+  // const [city, setCity] = React.useState("San Francisco");
 
   const handleEditName = async () => {
     if (!editingName) {
@@ -141,12 +141,12 @@ export const ProfileScreen = ({ navigation }) => {
               <Paragraph>{plan}</Paragraph>
             </Card.Content>
           </Card>
-          <Card style={styles.card}>
+          {/* <Card style={styles.card}>
             <Card.Content>
               <Title>City</Title>
               <Paragraph>{city}</Paragraph>
             </Card.Content>
-          </Card>
+          </Card> */}
         </View>
       </ScrollView>
     </SafeArea>

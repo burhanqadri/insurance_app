@@ -22,6 +22,20 @@ const companies = [
 ];
 
 export const CompanySelectScreen = ({ navigation }) => {
+  // React.useLayoutEffect(() => {
+  //   navigation.setOptions({
+  //     headerLeft: () => (
+  //       <TouchableOpacity
+  //         onPress={() => {
+  //           navigation.navigate("Profile");
+  //         }}
+  //       >
+  //         <Ionicons name="arrow-back" size={24} color="black" />
+  //       </TouchableOpacity>
+  //     ),
+  //   });
+  // }, []);
+
   // const { func_completeTask, func_getUserTasks } = useContext(UserDataContext);
 
   const [searchTerm, setSearchTerm] = useState("");
