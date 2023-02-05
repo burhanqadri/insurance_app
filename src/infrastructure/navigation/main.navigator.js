@@ -25,11 +25,10 @@ export const MainNavigator = () => (
       },
     }}
   >
-    <Stack.Screen name="ClaimsListScreen" component={ClaimsListScreen} />
-    <Stack.Screen name="ClaimFormScreen" component={ClaimFormScreen} />
     <Stack.Screen name="Feeling" component={FeelingScreen} />
-
     <Stack.Screen name="PlanOverview" component={PlanOverviewScreen} />
+    <Stack.Screen name="ClaimsList" component={ClaimsListScreen} />
+    <Stack.Screen name="ClaimForm" component={ClaimFormScreen} />
     <Stack.Screen name="ServiceDetail" component={ServiceDetailScreen} />
     <Stack.Screen name="ProviderSearch" component={ProviderSearchScreen} />
     <Stack.Screen name="ProviderProfile" component={ProviderProfileScreen} />

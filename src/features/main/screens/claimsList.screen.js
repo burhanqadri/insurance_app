@@ -1,5 +1,6 @@
 import { Card, Paragraph, Searchbar, Title } from "react-native-paper";
-import { FlatList, Text, View } from "react-native";
+import { FlatList, Text, TouchableOpacity, View } from "react-native";
+import { FontAwesome, Ionicons } from "@expo/vector-icons";
 import React, { useContext, useState } from "react";
 
 import { UserDataContext } from "../../../services/userData/userData.context";
@@ -32,19 +33,29 @@ const sampleClaims = [
 ];
 
 export const ClaimsListScreen = ({ navigation, claims }) => {
-  // React.useLayoutEffect(() => {
-  //   navigation.setOptions({
-  //     headerLeft: () => (
-  //       <TouchableOpacity
-  //         onPress={() => {
-  //           navigation.navigate("Profile");
-  //         }}
-  //       >
-  //         <Ionicons name="arrow-back" size={24} color="black" />
-  //       </TouchableOpacity>
-  //     ),
-  //   });
-  // }, []);
+  React.useLayoutEffect(() => {
+    navigation.setOptions({
+      headerLeft: () => (
+        <TouchableOpacity
+          onPress={() => {
+            navigation.goBack();
+            // navigation.navigate("PlanOverview");
+          }}
+        >
+          <Ionicons name="arrow-back" size={24} color="black" />
+        </TouchableOpacity>
+      ),
+      headerRight: () => (
+        <TouchableOpacity
+          onPress={() => {
+            navigation.navigate("ClaimForm");
+          }}
+        >
+          <FontAwesome name="plus-circle" size={24} color="black" />
+        </TouchableOpacity>
+      ),
+    });
+  }, []);
   // const { func_completeTask, func_getUserTasks } = useContext(UserDataContext);
 
   const [searchQuery, setSearchQuery] = useState("");
@@ -54,9 +65,9 @@ export const ClaimsListScreen = ({ navigation, claims }) => {
     setSearchQuery(query);
     const lowercasedQuery = query.toLowerCase();
     setFilteredClaims(
-      claims.filter(
+      sampleClaims.filter(
         (claim) =>
-          claim.typeOfService.toLowerCase().includes(lowercasedQuery) ||
+          claim.serviceCovered.toLowerCase().includes(lowercasedQuery) ||
           claim.serviceGroup.toLowerCase().includes(lowercasedQuery)
       )
     );

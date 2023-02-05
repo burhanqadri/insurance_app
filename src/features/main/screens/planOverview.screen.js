@@ -44,7 +44,7 @@ const services = [
 
 const ServiceRow = ({ service, navigation }) => {
   const handlePress = () => {
-    navigation.navigate("ServiceDetails", { serviceId: service.id });
+    navigation.navigate("ServiceDetail", { serviceId: service.id });
   };
 
   return (
@@ -59,7 +59,7 @@ const ServiceRow = ({ service, navigation }) => {
     >
       <Card.Title
         title={service.name}
-        left={(props) => <Avatar.Image source={service.icon} />}
+        left={(props) => <Avatar.Image source={service.icon} size={50} />}
       />
       <Card.Content>
         <Paragraph>Coverage: {service.coveragePercent}%</Paragraph>
@@ -111,7 +111,10 @@ export const PlanOverviewScreen = ({ navigation }) => {
 
   return (
     <SafeArea>
-      <ScrollView style={{ flex: 1, marginHorizontal: 15 }}>
+      <ScrollView
+        style={{ flex: 1, marginHorizontal: 15 }}
+        showsVerticalScrollIndicator={false}
+      >
         <Searchbar
           placeholder="Search services"
           value={searchQuery}
@@ -120,7 +123,7 @@ export const PlanOverviewScreen = ({ navigation }) => {
         />
         <View
           style={{
-            backgroundColor: "#ff300040",
+            backgroundColor: "#AAD9BB50",
             borderRadius: 10,
             padding: 10,
           }}

@@ -2,11 +2,11 @@ import {
   ActivityIndicator,
   Button,
   Card,
+  Chip,
   Paragraph,
-  ScrollView,
   Title,
 } from "react-native-paper";
-import { Image, View } from "react-native";
+import { Image, ScrollView, Text, View } from "react-native";
 import React, { useContext, useState } from "react";
 
 import { Ionicons } from "@expo/vector-icons";
@@ -21,7 +21,8 @@ export const ServiceDetailScreen = ({ navigation, route }) => {
           size={24}
           color="black"
           onPress={() => {
-            navigation.navigate("PlanOverview");
+            navigation.goBack();
+            // navigation.navigate("PlanOverview");
           }}
         />
       ),
@@ -46,10 +47,13 @@ export const ServiceDetailScreen = ({ navigation, route }) => {
   const feelingsChips = ["Anxiety", "Depression", "Stress", "Grief"];
 
   return (
-    <View style={{ flex: 1 }}>
+    <ScrollView
+      style={{ flex: 1, marginHorizontal: 20 }}
+      showsVerticalScrollIndicator={false}
+    >
       <Title style={{ padding: 20 }}>{serviceName}</Title>
 
-      <Card style={{ margin: 20, padding: 20 }}>
+      <Card style={{ padding: 20 }}>
         <Paragraph style={{ fontWeight: "bold" }}>
           Total Annual Maximum:
         </Paragraph>
@@ -63,7 +67,7 @@ export const ServiceDetailScreen = ({ navigation, route }) => {
       <Button
         style={{ margin: 20 }}
         mode="contained"
-        onPress={() => navigation.navigate("Claims")}
+        onPress={() => navigation.navigate("ClaimsList")}
       >
         View Claims
       </Button>
@@ -76,14 +80,17 @@ export const ServiceDetailScreen = ({ navigation, route }) => {
         Find a Provider
       </Button>
 
-      <Title style={{ padding: 20 }}>Featured Therapists</Title>
+      <Title style={{ padding: 20 }}>Featured Providers</Title>
       <ScrollView
         horizontal={true}
         showsHorizontalScrollIndicator={false}
-        style={{ margin: 20, padding: 20 }}
+        // style={{ margin: 20, padding: 20 }}
       >
         {featuredTherapists.map((therapist, index) => (
-          <Card key={index} style={{ padding: 20, width: 200 }}>
+          <Card
+            key={index}
+            style={{ marginHorizontal: 10, padding: 20, width: 200 }}
+          >
             <Image
               style={{ width: "100%", height: 200 }}
               source={{ uri: therapist.image }}
@@ -93,13 +100,13 @@ export const ServiceDetailScreen = ({ navigation, route }) => {
         ))}
       </ScrollView>
       <Title style={{ padding: 20 }}>Feelings We Can Help With</Title>
-      <View style={{ margin: 20, padding: 20 }}>
+      <View style={{}}>
         {feelingsChips.map((feeling, index) => (
           <Chip key={index} style={{ margin: 10 }}>
             {feeling}
           </Chip>
         ))}
       </View>
-    </View>
+    </ScrollView>
   );
 };

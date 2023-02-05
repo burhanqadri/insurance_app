@@ -1,4 +1,4 @@
-import { Card, CardTitle } from "react-native-paper";
+import { Avatar, Card } from "react-native-paper";
 import { Image, Text, TouchableOpacity, View } from "react-native";
 
 import React from "react";
@@ -34,17 +34,20 @@ export const FeelingScreen = ({ navigation }) => {
         <TouchableOpacity
           key={item.id}
           onPress={() => navigation.navigate("Details", { item })}
+          style={{ margin: 15 }}
         >
           <Card>
             <Card.Content style={{ flexDirection: "row" }}>
               <View style={{ flex: 1 }}>
-                <CardTitle
+                <Card.Title
                   title={item.title}
                   subtitle={item.subtitle}
                   style={{ paddingRight: 16 }}
+                  right={(props) => (
+                    <Avatar.Image source={item.image} size={50} />
+                  )}
                 />
               </View>
-              <Image source={item.image} style={{ maxWith: 100 }} />
             </Card.Content>
           </Card>
         </TouchableOpacity>

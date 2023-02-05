@@ -68,7 +68,7 @@ export const LearnScreen = ({ navigation }) => {
   const [expanded, setExpanded] = useState(false);
 
   return (
-    <View style={styles.container}>
+    <ScrollView style={styles.container}>
       <ScrollView
         horizontal
         showsHorizontalScrollIndicator={false}
@@ -137,6 +137,34 @@ export const LearnScreen = ({ navigation }) => {
             </List.Item>
           </List.Accordion>
         )}
+        {expanded && (
+          <List.Accordion
+            title="Steps to get your insurance member card"
+            style={styles.accordionContainer}
+          >
+            <List.Item title="Step 1">
+              <Paragraph>
+                Go to the Reimbursement section in the app and provide the
+                necessary information.
+              </Paragraph>
+            </List.Item>
+            <List.Item title="Step 2">
+              <Paragraph>
+                Attach the required supporting documents and submit the request.
+              </Paragraph>
+            </List.Item>
+            <List.Item title="Step 3">
+              <Paragraph>
+                Wait for the request to be reviewed and approved.
+              </Paragraph>
+            </List.Item>
+            <List.Item title="Step 4">
+              <Paragraph>
+                Receive the reimbursement in the form of payment.
+              </Paragraph>
+            </List.Item>
+          </List.Accordion>
+        )}
       </Card>
       {selectedStory && (
         <StoryModal
@@ -144,12 +172,12 @@ export const LearnScreen = ({ navigation }) => {
           onClose={() => setSelectedStory(null)}
         />
       )}
-    </View>
+    </ScrollView>
   );
 };
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    // flex: 1,
   },
   storiesContainer: {
     paddingVertical: 10,
@@ -174,6 +202,7 @@ const styles = StyleSheet.create({
     textAlign: "center",
   },
   modalContainer: {
+    // flex: 1,
     position: "absolute",
     top: 0,
     bottom: 0,
