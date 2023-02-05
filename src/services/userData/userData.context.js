@@ -1,5 +1,3 @@
-//@collapse
-
 import * as Notifications from "expo-notifications";
 
 import { AppState, StyleSheet, Text, View } from "react-native";
