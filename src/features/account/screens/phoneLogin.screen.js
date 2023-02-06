@@ -184,10 +184,10 @@ export const PhoneLoginScreen = ({ navigation }) => {
                       console.log(
                         "Navigating, shouldn't we wait to see if the user exists?"
                       );
-                      navigation.navigate("CompanySelect");
-                      navigation.navigate("MainNavigator", {
-                        screen: "PlanOverview",
-                      });
+                      // navigation.navigate("CompanySelect", {cameFrom: "PhoneLogin"});
+                      // navigation.navigate("MainNavigator", {
+                      //   screen: "PlanOverview",
+                      // });
                       console.log("Signed in!");
                     } catch (err) {
                       showMessage({

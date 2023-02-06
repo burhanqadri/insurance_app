@@ -25,19 +25,19 @@ import {
 } from "./requests/provider.requests";
 import { useLazyQuery, useMutation, useQuery } from "@apollo/client";
 
-import { useFirebase } from "../../../services/firebase/firebase.context";
+import { useFirebase } from "../firebase/firebase.context";
 
 // ****************************************
 export const UserDataContext = createContext();
 
 export const UserDataContextProvider = ({ children }) => {
-  const { firebaseUser } = useFirebase();
+  const { firebaseUser, loading } = useFirebase();
 
   const appUserObj = {};
   const [appUser, setAppUser] = useState(appUserObj);
-  // const [get_User] = useLazyQuery(GET_USER_BY, {
-  //   fetchPolicy: "network-only",
-  // });
+  const [get_User] = useLazyQuery(GET_USER_BY, {
+    fetchPolicy: "network-only",
+  });
   // const [do_createUser, {}] = useMutation(CREATE_USER);
   // const [do_updateUser, {}] = useMutation(UPDATE_USER);
 
@@ -71,7 +71,7 @@ export const UserDataContextProvider = ({ children }) => {
   // Useffect for when to update  *******************************************************************
   useEffect(() => {
     console.log("STARTING");
-    // func_getUser();
+    func_getUser();
 
     const subscription = AppState.addEventListener(
       "change",
@@ -97,12 +97,14 @@ export const UserDataContextProvider = ({ children }) => {
   //
   // users
   //
-  async function func_getUser(save = true) {
+  async function func_getUser() {
     if (!firebaseUser) {
+      console.log("EXITING");
       return;
     }
     console.log("THERE IS A USER", firebaseUser.uid);
-    // const data = await req_getUser({ uid }, get_User);
+    const data = await req_getUser({ uid }, get_User);
+    console.log("DATA", data);
     // return data;
   }
 

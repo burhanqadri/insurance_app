@@ -5,16 +5,17 @@ export const GET_USER_BY = gql`
   query ($uid: ID!) {
     getUser(uid: $uid) {
       uid
-      phone
-      companies {
-        name
-      }
-      insurancePlans {
-        name
-      }
-      claims {
-        claimID
-      }
+      name
+      # phone
+      # companies {
+      #   name
+      # }
+      # insurancePlans {
+      #   name
+      # }
+      # claims {
+      #   claimID
+      # }
     }
   }
 `;

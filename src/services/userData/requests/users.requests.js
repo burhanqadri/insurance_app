@@ -10,6 +10,7 @@ import { useLazyQuery, useMutation, useQuery } from "@apollo/client";
 import gql from "graphql-tag";
 
 export async function req_getUser(q, get_User) {
+  console.log("Do we ever get here??");
   var { data } = await get_User({
     variables: { uid: q.uid },
   });
