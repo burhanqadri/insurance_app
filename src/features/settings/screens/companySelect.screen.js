@@ -6,7 +6,7 @@ import {
   TextInput,
 } from "react-native-paper";
 import React, { useContext, useState } from "react";
-import { ScrollView, View } from "react-native";
+import { ScrollView, TouchableOpacity, View } from "react-native";
 
 import { Ionicons } from "@expo/vector-icons";
 import { UserDataContext } from "../../../services/userData/userData.context";
@@ -22,19 +22,19 @@ const companies = [
 ];
 
 export const CompanySelectScreen = ({ navigation }) => {
-  // React.useLayoutEffect(() => {
-  //   navigation.setOptions({
-  //     headerLeft: () => (
-  //       <TouchableOpacity
-  //         onPress={() => {
-  //           navigation.navigate("Profile");
-  //         }}
-  //       >
-  //         <Ionicons name="arrow-back" size={24} color="black" />
-  //       </TouchableOpacity>
-  //     ),
-  //   });
-  // }, []);
+  React.useLayoutEffect(() => {
+    navigation.setOptions({
+      headerLeft: () => (
+        <TouchableOpacity
+          onPress={() => {
+            navigation.navigate("Profile");
+          }}
+        >
+          <Ionicons name="arrow-back" size={24} color="black" />
+        </TouchableOpacity>
+      ),
+    });
+  }, []);
 
   // const { func_completeTask, func_getUserTasks } = useContext(UserDataContext);
 
@@ -50,7 +50,7 @@ export const CompanySelectScreen = ({ navigation }) => {
   };
 
   return (
-    <>
+    <View>
       <Searchbar
         placeholder="Search for a company"
         onChangeText={handleSearch}
@@ -99,6 +99,6 @@ export const CompanySelectScreen = ({ navigation }) => {
           Next
         </Button>
       </ScrollView>
-    </>
+    </View>
   );
 };

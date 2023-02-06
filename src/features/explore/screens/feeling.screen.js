@@ -1,12 +1,12 @@
-import { Avatar, Card } from "react-native-paper";
-import { Image, Text, TouchableOpacity, View } from "react-native";
+import { Avatar, Card, Title } from "react-native-paper";
+import { Image, ScrollView, Text, TouchableOpacity, View } from "react-native";
 
 import React from "react";
 
 const data = [
   {
     id: 1,
-    title: "Anxiety",
+    title: "Anxiety, anger, sadness",
     subtitle: "Find peace of mind",
     image: require("../../../../assets/pic_1.jpg"),
   },
@@ -18,18 +18,32 @@ const data = [
   },
   {
     id: 3,
-    title: "Stress",
-    subtitle: "Take a deep breath",
+    title: "Eyes and ears",
+    subtitle: "Hearing and seeing",
+    image: require("../../../../assets/pic_5.jpg"),
+  },
+  {
+    id: 3,
+    title: "Aches and pains",
+    subtitle: "Nagging injuries",
+    image: require("../../../../assets/pic_5.jpg"),
+  },
+  {
+    id: 3,
+    title: "Feel healthier",
+    subtitle: "Weight loss, eat healthier, start at the gym",
     image: require("../../../../assets/pic_5.jpg"),
   },
 ];
 
 export const FeelingScreen = ({ navigation }) => {
   return (
-    <View style={{ flex: 1, padding: 16 }}>
-      <Text style={{ fontWeight: "bold", fontSize: 24, marginBottom: 16 }}>
-        Help me with...
-      </Text>
+    <ScrollView style={{ flex: 1, padding: 16 }}>
+      <View style={{ alignItems: "left", paddingVertical: 14 }}>
+        <Title style={{ fontSize: 32, fontWeight: "bold" }}>
+          Help me with _____
+        </Title>
+      </View>
       {data.map((item) => (
         <TouchableOpacity
           key={item.id}
@@ -52,6 +66,6 @@ export const FeelingScreen = ({ navigation }) => {
           </Card>
         </TouchableOpacity>
       ))}
-    </View>
+    </ScrollView>
   );
 };

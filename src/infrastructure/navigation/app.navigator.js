@@ -1,6 +1,7 @@
 import React, { useContext, useEffect } from "react";
 
 import { CompanySelectScreen } from "../../features/settings/screens/companySelect.screen";
+import { ExploreNavigator } from "./explore.navigator";
 import { Header } from "../../components/header/header.component";
 import { Ionicons } from "@expo/vector-icons";
 import { LearnNavigator } from "./learn.navigator";
@@ -16,6 +17,7 @@ const Tab = createBottomTabNavigator();
 
 const TAB_ICON = {
   HomeTab: "md-home",
+  ExploreTab: "search-sharp",
   LearnTab: "book",
 };
 
@@ -41,6 +43,7 @@ function Tabs() {
   return (
     <Tab.Navigator screenOptions={createScreenOptions}>
       <Tab.Screen name="HomeTab" component={MainNavigator} />
+      <Tab.Screen name="ExploreTab" component={ExploreNavigator} />
       <Tab.Screen name="LearnTab" component={LearnNavigator} />
     </Tab.Navigator>
   );
@@ -50,6 +53,9 @@ export const AppNavigator = () => {
   return (
     <Stack.Navigator
       screenOptions={{
+        contentStyle: {
+          backgroundColor: "#FFFFFF",
+        },
         headerTitle: (props) => <Header />,
         headerShadowVisible: false,
         headerStyle: {

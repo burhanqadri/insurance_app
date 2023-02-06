@@ -5,6 +5,7 @@ import {
   Paragraph,
   Surface,
   Text,
+  Title,
 } from "react-native-paper";
 import {
   Dimensions,
@@ -46,9 +47,10 @@ const stories = [
 const Story = ({ story, onPress }) => (
   <TouchableOpacity onPress={onPress}>
     <Surface style={styles.storyContainer}>
+      {/* <Text style={{ color: "red" }}>Gin and tonic</Text> */}
       <Image source={story.source} style={styles.storyImage} />
-      <Text style={styles.storyTitle}>{story.title}</Text>
     </Surface>
+    <Text style={styles.storyTitle}>{story.title}</Text>
   </TouchableOpacity>
 );
 
@@ -69,6 +71,9 @@ export const LearnScreen = ({ navigation }) => {
 
   return (
     <ScrollView style={styles.container}>
+      <View style={{ alignItems: "left", paddingVertical: 14 }}>
+        <Title style={{ fontSize: 32, fontWeight: "bold" }}>Learn</Title>
+      </View>
       <ScrollView
         horizontal
         showsHorizontalScrollIndicator={false}
@@ -177,10 +182,11 @@ export const LearnScreen = ({ navigation }) => {
 };
 const styles = StyleSheet.create({
   container: {
+    marginHorizontal: 20,
     // flex: 1,
   },
   storiesContainer: {
-    paddingVertical: 10,
+    paddingVertical: 20,
     paddingHorizontal: 10,
   },
   storyContainer: {
@@ -231,7 +237,7 @@ const styles = StyleSheet.create({
   },
   cardContainer: {
     marginHorizontal: 10,
-    marginVertical: 5,
+    marginVertical: 15,
   },
   cardAction: {
     color: "#ff5a",

@@ -1,11 +1,12 @@
 import { CompanySelectScreen } from "../../features/settings/screens/companySelect.screen";
 import { Header } from "../../components/header/header.component";
 import { OnboardingExplainersScreen } from "../../features/account/screens/onboardingExplainers.screen";
-import { OnboardingQuestionsScreen } from "../../features/account/screens/onboardingQuestions.screen";
 import { PhoneLoginScreen } from "../../features/account/screens/phoneLogin.screen";
 import { PlanSelectScreen } from "../../features/settings/screens/planSelect.screen";
 import React from "react";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
+
+// import { OnboardingQuestionsScreen } from "../../features/account/screens/onboardingQuestions.screen";
 
 const Stack = createNativeStackNavigator();
 

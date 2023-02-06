@@ -1,7 +1,5 @@
 import { ClaimFormScreen } from "../../features/main/screens/claimForm.screen";
 import { ClaimsListScreen } from "../../features/main/screens/claimsList.screen";
-import { FeelingScreen } from "../../features/main/screens/feeling.screen";
-import { FontAwesome5 } from "@expo/vector-icons";
 import { Header } from "../../components/header/header.component";
 import { PlanOverviewScreen } from "../../features/main/screens/planOverview.screen";
 import { ProviderProfileScreen } from "../../features/main/screens/providerProfile.screen";
@@ -25,7 +23,6 @@ export const MainNavigator = () => (
       },
     }}
   >
-    <Stack.Screen name="Feeling" component={FeelingScreen} />
     <Stack.Screen name="PlanOverview" component={PlanOverviewScreen} />
     <Stack.Screen name="ClaimsList" component={ClaimsListScreen} />
     <Stack.Screen name="ClaimForm" component={ClaimFormScreen} />

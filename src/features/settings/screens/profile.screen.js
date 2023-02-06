@@ -128,19 +128,31 @@ export const ProfileScreen = ({ navigation }) => {
               )}
             </Card.Content>
           </Card>
+          <TouchableOpacity
+            onPress={() => {
+              navigation.navigate("CompanySelect");
+            }}
+          >
+            <Card style={styles.card}>
+              <Card.Content>
+                <Title>Company</Title>
+                <Paragraph>{company}</Paragraph>
+              </Card.Content>
+            </Card>
+          </TouchableOpacity>
+          <TouchableOpacity
+            onPress={() => {
+              navigation.navigate("PlanSelect");
+            }}
+          >
+            <Card style={styles.card}>
+              <Card.Content>
+                <Title>Plan</Title>
+                <Paragraph>{plan}</Paragraph>
+              </Card.Content>
+            </Card>
+          </TouchableOpacity>
 
-          <Card style={styles.card}>
-            <Card.Content>
-              <Title>Company</Title>
-              <Paragraph>{company}</Paragraph>
-            </Card.Content>
-          </Card>
-          <Card style={styles.card}>
-            <Card.Content>
-              <Title>Plan</Title>
-              <Paragraph>{plan}</Paragraph>
-            </Card.Content>
-          </Card>
           {/* <Card style={styles.card}>
             <Card.Content>
               <Title>City</Title>
