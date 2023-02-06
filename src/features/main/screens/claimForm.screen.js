@@ -18,7 +18,8 @@ import DateTimePicker from "@react-native-community/datetimepicker";
 import { Ionicons } from "@expo/vector-icons";
 import { UserDataContext } from "../../../services/userData/userData.context";
 
-export const ClaimFormScreen = ({ navigation, serviceCovered = null }) => {
+export const ClaimFormScreen = ({ route, navigation }) => {
+  const { claim } = route;
   /**
    * This useEffect hook sets the navigation header to have a back arrow button
    * that navigates back to the ClaimsList screen.
@@ -46,6 +47,10 @@ export const ClaimFormScreen = ({ navigation, serviceCovered = null }) => {
   const [reimbursementReceived, setReimbursementReceived] = useState(false);
   const [amountReimbursed, setAmountReimbursed] = useState("");
 
+  if (claim) {
+    setDate(claim.date);
+  }
+
   /**
    * This function sets the `showDatePicker` state to false when a date is selected
    * and sets the `date` state to the selected date.
@@ -61,13 +66,23 @@ export const ClaimFormScreen = ({ navigation, serviceCovered = null }) => {
     setDate(selectedDate || date);
   };
 
+  // handle form submission
+  const onSubmit = () => {
+    if (claim) {
+      // func_updateClaim();
+    } else {
+      // func_createClaim()
+      console.log("sfdsfsdf");
+    }
+  };
+
   return (
     <ScrollView>
       <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
         <View style={{ flex: 1, padding: 16, justifyContent: "center" }}>
           <Card style={{ elevation: 4, borderRadius: 10 }}>
             <Card.Title
-              title="Insurance Claim"
+              title={claim ? "Edit Claim" : "Add Claim"}
               subtitle="Please input your claim details"
             />
             <Card.Content>
@@ -163,11 +178,9 @@ export const ClaimFormScreen = ({ navigation, serviceCovered = null }) => {
               <Button
                 mode="contained"
                 style={{ marginTop: 16 }}
-                onPress={() => {
-                  // handle form submission
-                }}
+                onPress={onSubmit}
               >
-                Submit
+                {claim ? "Save" : "Submit"}
               </Button>
             </Card.Content>
           </Card>

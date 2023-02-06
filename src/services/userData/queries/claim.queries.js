@@ -49,7 +49,7 @@ export const CREATE_CLAIM = gql`
   ) {
     createClaim(
       input: {
-        userID: $uid
+        uid: $uid
         amount: $amount
         date: $date
         reimbursementFiled: $reimbursementFiled

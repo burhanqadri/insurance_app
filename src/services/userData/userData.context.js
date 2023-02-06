@@ -25,10 +25,14 @@ import {
 } from "./requests/provider.requests";
 import { useLazyQuery, useMutation, useQuery } from "@apollo/client";
 
+import { useFirebase } from "../../../services/firebase/firebase.context";
+
 // ****************************************
 export const UserDataContext = createContext();
 
 export const UserDataContextProvider = ({ children }) => {
+  const { firebaseUser } = useFirebase();
+
   const appUserObj = {};
   const [appUser, setAppUser] = useState(appUserObj);
   // const [get_User] = useLazyQuery(GET_USER_BY, {
@@ -68,6 +72,7 @@ export const UserDataContextProvider = ({ children }) => {
   useEffect(() => {
     console.log("STARTING");
     // func_getUser();
+
     const subscription = AppState.addEventListener(
       "change",
       async (nextAppState) => {
@@ -93,7 +98,10 @@ export const UserDataContextProvider = ({ children }) => {
   // users
   //
   async function func_getUser(save = true) {
-    return;
+    if (!firebaseUser) {
+      return;
+    }
+    console.log("THERE IS A USER", firebaseUser.uid);
     // const data = await req_getUser({ uid }, get_User);
     // return data;
   }

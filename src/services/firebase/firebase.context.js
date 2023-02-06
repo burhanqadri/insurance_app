@@ -23,6 +23,9 @@ export const FirebaseProvider = ({ children }) => {
   useEffect(() => {
     const unsubscribe = getAuth().onAuthStateChanged(async (firebaseUser) => {
       setFirebaseUser(firebaseUser);
+      console.log(firebaseUser);
+      console.log("UID", firebaseUser.uid);
+      console.log("running!!");
       setLoading(false);
     });
     return () => unsubscribe();

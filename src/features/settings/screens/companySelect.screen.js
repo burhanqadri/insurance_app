@@ -21,18 +21,22 @@ const companies = [
   { name: "Zoom", available: true },
 ];
 
-export const CompanySelectScreen = ({ navigation }) => {
+export const CompanySelectScreen = ({ navigation, route }) => {
   React.useLayoutEffect(() => {
     navigation.setOptions({
-      headerLeft: () => (
-        <TouchableOpacity
-          onPress={() => {
-            navigation.navigate("Profile");
-          }}
-        >
-          <Ionicons name="arrow-back" size={24} color="black" />
-        </TouchableOpacity>
-      ),
+      headerLeft: () => {
+        {
+          route.cameFrom != "PhoneLogin" ? (
+            <TouchableOpacity
+              onPress={() => {
+                navigation.navigate("Profile");
+              }}
+            >
+              <Ionicons name="arrow-back" size={24} color="black" />
+            </TouchableOpacity>
+          ) : null;
+        }
+      },
     });
   }, []);
 

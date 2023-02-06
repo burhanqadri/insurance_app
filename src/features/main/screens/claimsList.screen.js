@@ -86,7 +86,14 @@ export const ClaimsListScreen = ({ navigation, claims }) => {
         renderItem={({ item: claim }) => (
           <Card style={{ marginVertical: 8, borderRadius: 8 }}>
             <Card.Content>
-              <Title>{claim.serviceCovered}</Title>
+              <TouchableOpacity
+                onPress={() => {
+                  navigation.navigate("ClaimForm", { claim: claim });
+                }}
+              >
+                <Title>{claim.serviceCovered}</Title>
+              </TouchableOpacity>
+
               {/* <Paragraph>Service Group: {claim.serviceGroup}</Paragraph> */}
               <Paragraph>Date: {claim.date}</Paragraph>
               {/* <Paragraph>
