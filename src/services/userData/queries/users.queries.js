@@ -42,9 +42,6 @@ export const CREATE_USER = gql`
       insurancePlans {
         name
       }
-      claims {
-        claimID
-      }
     }
   }
 `;

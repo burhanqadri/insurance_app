@@ -16,11 +16,13 @@ export async function req_getUser(q, get_User) {
   return data;
 }
 
-export async function req_createUser(q, do_createUser, curUser) {
+export async function req_createUser(q, do_createUser) {
   const newUserData = await do_createUser({
     variables: {
       uid: q.uid,
-      name: curUser.name,
+      // phone: ,
+      // companies: ,
+      // insurancePlans: ,
     },
   });
   return newUserData;

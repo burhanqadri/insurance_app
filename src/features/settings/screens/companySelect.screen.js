@@ -40,7 +40,7 @@ export const CompanySelectScreen = ({ navigation, route }) => {
     });
   }, []);
 
-  // const { func_completeTask, func_getUserTasks } = useContext(UserDataContext);
+  const { appUser, setAppUser } = useContext(UserDataContext);
 
   const [searchTerm, setSearchTerm] = useState("");
   const [filteredCompanies, setFilteredCompanies] = useState(companies);

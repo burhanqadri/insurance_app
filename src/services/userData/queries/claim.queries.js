@@ -26,7 +26,7 @@ export const CREATE_CLAIM = gql`
     $amount: Float
     $reimbursementFiled: Boolean
     $reimbursementReceived: Boolean
-    $serviceCoveredID: String
+    $serviceCoveredID: String!
   ) {
     createClaim(
       input: {
@@ -69,7 +69,7 @@ export const CREATE_CLAIM = gql`
 export const UPDATE_CLAIM = gql`
   mutation (
     $claimID: ID!
-    $date: String!
+    $date: String
     $amount: Float
     $reimbursementFiled: Boolean
     $reimbursementReceived: Boolean
@@ -95,8 +95,8 @@ export const UPDATE_CLAIM = gql`
 `;
 
 export const DELETE_CLAIM = gql`
-  mutation ($uid: ID!, $claimID: ID!) {
-    deleteClaim(claimID: $claimID, uid: $uid) {
+  mutation ($claimID: ID!) {
+    deleteClaim(claimID: $claimID) {
       claimID
     }
   }

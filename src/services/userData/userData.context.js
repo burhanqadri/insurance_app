@@ -34,7 +34,13 @@ import { GET_PROVIDERS_BY } from "./queries/provider.queries";
 export const UserDataContext = createContext();
 
 export const UserDataContextProvider = ({ children }) => {
-  const [appUser, setAppUser] = useState({ uid: "" });
+  const [appUser, setAppUser] = useState({
+    uid: "",
+    phone: "",
+    companies: [],
+    insurancePlans: [],
+    claims: [],
+  });
 
   //users
   const [get_User] = useLazyQuery(GET_USER_BY, {
@@ -71,6 +77,7 @@ export const UserDataContextProvider = ({ children }) => {
     var data;
     try {
       data = await req_getUser({ uid: thisUid }, get_User);
+      // setAppUser({})
     } catch (error) {
       console.log("ERROR", error);
     }
@@ -78,10 +85,18 @@ export const UserDataContextProvider = ({ children }) => {
     return data;
   }
 
-  async function func_createUser() {
-    return;
-    // await req_addUser({ uid }, do_addHabit, do_createUser, curTime, curUser);
+  async function func_createUser(thisUid) {
+    await req_addUser(
+      {
+        uid: thisUid,
+        // phone: appUser.phone,
+        // companies: appUser.companies,
+        // insurancePlans: appUser.insurnacePlans,
+      },
+      do_createUser
+    );
   }
+
   async function func_updateUser(userFilter) {
     try {
       await do_updateUser({
@@ -92,8 +107,9 @@ export const UserDataContextProvider = ({ children }) => {
     }
 
     //refetch user
-    await func_getUser();
-    // return;
+    // await func_getUser();
+    // OR
+    // could set the user here again based on what's returned from the update function!!!!
   }
   //
   // company
