@@ -67,7 +67,9 @@ export const ServiceDetailScreen = ({ navigation, route }) => {
       <Button
         style={{ margin: 20 }}
         mode="contained"
-        onPress={() => navigation.navigate("ClaimsList")}
+        onPress={() => {
+          navigation.navigate("ClaimsList");
+        }}
       >
         View Claims
       </Button>

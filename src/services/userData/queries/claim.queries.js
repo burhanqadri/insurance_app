@@ -1,25 +1,6 @@
 import gql from "graphql-tag";
 
-// users  ***************************************************************************************************
-export const GET_CLAIM_BY = gql`
-  query ($claimID: ID!) {
-    getClaim(claimID: $claimID) {
-      claimID
-      user {
-        name
-      }
-      amount
-      date
-      reimbursementFiled
-      reimbursementReceived
-      serviceCovered {
-        name
-      }
-    }
-  }
-`;
-
-export const GET_CLAIMS_BY = gql`
+export const GET_USER_CLAIMS_BY = gql`
   query ($uid: ID!, $serviceCoveredID: ID) {
     getClaims(uid: $uid, serviceCoveredID: $serviceCoveredID) {
       claimID
