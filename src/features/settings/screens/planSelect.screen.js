@@ -19,7 +19,9 @@ export const PlanSelectScreen = ({ navigation, route }) => {
   //     });
   //   }, []);
   const { appUser, func_updateUser } = useContext(UserDataContext);
-  const [selectedPlans, setSelectedPlans] = useState([]);
+  const [selectedPlans, setSelectedPlans] = useState(appUser.insurancePlans);
+
+  const plans = route.params.plans;
 
   const handleSelectPlan = (plan) => {
     const index = selectedPlans.indexOf(plan);
@@ -30,9 +32,11 @@ export const PlanSelectScreen = ({ navigation, route }) => {
     }
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     console.log("Selected plans: ", selectedPlans);
-    // Submit the selected plans to your database or API here.
+    await func_updateUser({ insurancePlans: selectedPlans });
+    //create toast saying successfully changed
+    navigation.navigate("PlanOverview");
   };
 
   return (

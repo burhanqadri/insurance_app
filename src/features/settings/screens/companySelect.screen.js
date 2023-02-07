@@ -26,7 +26,7 @@ export const CompanySelectScreen = ({ navigation, route }) => {
     navigation.setOptions({
       headerLeft: () => {
         {
-          route.cameFrom != "PhoneLogin" ? (
+          route.cameFrom !== "PhoneLogin" ? (
             <TouchableOpacity
               onPress={() => {
                 navigation.navigate("Profile");
@@ -44,6 +44,7 @@ export const CompanySelectScreen = ({ navigation, route }) => {
 
   const [searchTerm, setSearchTerm] = useState("");
   const [filteredCompanies, setFilteredCompanies] = useState(companies);
+  const [selectedCompany, setSelectedCompany] = useState(null);
 
   const handleSearch = (text) => {
     setSearchTerm(text);
@@ -53,8 +54,12 @@ export const CompanySelectScreen = ({ navigation, route }) => {
     setFilteredCompanies(filteredList);
   };
 
+  const handleCompanySelection = (company) => {
+    setSelectedCompany(company);
+  };
+
   return (
-    <View>
+    <View style={{ flex: 1 }}>
       <Searchbar
         placeholder="Search for a company"
         onChangeText={handleSearch}
@@ -63,8 +68,9 @@ export const CompanySelectScreen = ({ navigation, route }) => {
       />
       <ScrollView style={{ padding: 16 }}>
         {filteredCompanies.map((company, index) => (
-          <View
+          <TouchableOpacity
             key={index}
+            onPress={() => handleCompanySelection(company)}
             style={{
               flexDirection: "row",
               alignItems: "center",
@@ -81,28 +87,24 @@ export const CompanySelectScreen = ({ navigation, route }) => {
             <View style={{ flex: 1 }}>
               <Text style={{ fontSize: 20 }}>{company.name}</Text>
             </View>
-            {!company.available && (
-              <Button
-                mode="contained"
-                color="#3498db"
-                style={{ borderRadius: 8, paddingHorizontal: 16 }}
-                onPress={() => console.log(`Requested to add ${company.name}`)}
-              >
-                Request to add
-              </Button>
+            {selectedCompany === company && (
+              <Ionicons name="md-checkmark-circle" size={24} color="green" />
             )}
-          </View>
+          </TouchableOpacity>
         ))}
+      </ScrollView>
+      <View style={{ padding: 16, alignItems: "center" }}>
         <Button
           mode="contained"
-          style={{ marginTop: 16 }}
+          disabled={!selectedCompany}
           onPress={() => {
-            navigation.navigate("Profile");
+            setAppUser({ ...appUser, company: selectedCompany.name });
+            navigation.navigate("Dashboard");
           }}
         >
           Next
         </Button>
-      </ScrollView>
+      </View>
     </View>
   );
 };
