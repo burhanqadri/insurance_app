@@ -28,10 +28,10 @@ export const ServiceDetailScreen = ({ navigation, route }) => {
       ),
     });
   }, []);
-  // const { func_completeTask, func_getUserTasks } = useContext(UserDataContext);
+  const { func_getProviders, func_getUserClaims } = useContext(UserDataContext);
+  const [selectedClaim, setSelectedClaim] = useState(null);
   // const { serviceName, totalAnnualMax, perVisitMax, remainingAmount } =
   //   route.params;
-  const [selectedClaim, setSelectedClaim] = useState(null);
 
   const serviceName = "Physiotherapy";
   const totalAnnualMax = 1000;

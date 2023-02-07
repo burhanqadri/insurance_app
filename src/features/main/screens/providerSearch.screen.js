@@ -34,7 +34,7 @@ const testObj = [
   },
 ];
 
-export const ProviderSearchScreen = ({ navigation }) => {
+export const ProviderSearchScreen = ({ navigation, route }) => {
   React.useLayoutEffect(() => {
     navigation.setOptions({
       headerLeft: () => (
@@ -49,11 +49,12 @@ export const ProviderSearchScreen = ({ navigation }) => {
       ),
     });
   }, []);
-  const { func_completeTask, func_getUserTasks } = useContext(UserDataContext);
+
+  const { appUser } = useContext(UserDataContext);
 
   const [location, setLocation] = useState({ latitude: 0, longitude: 0 });
-  //   const [practitioners, setPractitioners] = useState([]);
-  const [practitioners, setPractitioners] = useState(testObj);
+  //   const [providers, setProviders]  = useState([]);
+  const [providers, setProviders] = useState(testObj);
 
   useEffect(() => {
     (async () => {
@@ -76,11 +77,13 @@ export const ProviderSearchScreen = ({ navigation }) => {
 
   return (
     <ScrollView style={{ flex: 1, padding: 16 }}>
-      {practitioners.map((practitioner) => (
+      {practitioners.map((thisProvider) => (
         <TouchableOpacity
-          key={practitioner.id}
+          key={thisProvider.id}
           onPress={() =>
-            navigation.navigate("Provider", { practitionerId: practitioner.id })
+            navigation.navigate("ProviderProfile", {
+              providerID: thisProvider.providerID,
+            })
           }
         >
           <Card
@@ -92,23 +95,23 @@ export const ProviderSearchScreen = ({ navigation }) => {
             }}
           >
             <Card.Title
-              title={practitioner.name}
-              subtitle={`${practitioner.rating} stars`}
+              title={thisProvider.name}
+              subtitle={`${thisProvider.rating} stars`}
               left={(props) => (
                 <Avatar.Image
-                  source={{ uri: practitioner.imageUrl }}
+                  source={{ uri: thisProvider.imageUrl }}
                   size={40}
                   style={{ marginRight: 16 }}
                 />
               )}
               right={(props) => (
                 <Text style={{ fontWeight: "bold" }}>
-                  {practitioner.distance} km
+                  {thisProvider.distance} km
                 </Text>
               )}
             />
             <Card.Content>
-              <Paragraph>{practitioner.description}</Paragraph>
+              <Paragraph>{thisProvider.description}</Paragraph>
             </Card.Content>
           </Card>
         </TouchableOpacity>

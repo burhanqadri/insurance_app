@@ -15,13 +15,14 @@ import { UserDataContext } from "../../../services/userData/userData.context";
 
 // import { SafeAreaView } from "react-native-safe-area-context";
 
-export const ProviderProfileScreen = ({ navigation }) => {
+export const ProviderProfileScreen = ({ navigation, route }) => {
   React.useLayoutEffect(() => {
     navigation.setOptions({
       headerLeft: () => (
         <TouchableOpacity
           onPress={() => {
-            navigation.navigate("ServiceDetail");
+            // navigation.navigate("ServiceDetail");
+            navigation.goBack();
           }}
         >
           <Ionicons name="arrow-back" size={24} color="black" />
@@ -30,10 +31,10 @@ export const ProviderProfileScreen = ({ navigation }) => {
     });
   }, []);
 
-  // const { func_completeTask, func_getUserTasks } = useContext(UserDataContext);
+  const { appUser } = useContext(UserDataContext);
+  const provider = route.params.provider;
 
   return (
-    // <SafeAreaView style={{ flex: 1 }}>
     <SafeArea>
       <ScrollView
         style={{ paddingHorizontal: 20, paddingTop: 20 }}
@@ -47,18 +48,18 @@ export const ProviderProfileScreen = ({ navigation }) => {
             }}
           />
           <View style={{ marginLeft: 20 }}>
-            <Title>Dr. Sarah Johnson</Title>
+            <Title>{provider.name}</Title>
             <Subheading style={{ fontWeight: "bold" }}>
-              Phone: +1 (123) 456-7890
+              Phone: {provider.phone}
             </Subheading>
-            <Subheading>Address: 123 Main St, New York, NY 10001</Subheading>
+            <Subheading>Address: {provider.address}</Subheading>
             <View style={{ flexDirection: "row", marginTop: 20 }}>
               <Chip mode="outlined" style={{ marginRight: 10 }}>
                 Massage Therapist
               </Chip>
-              <Chip mode="outlined" style={{ marginRight: 10 }}>
+              {/* <Chip mode="outlined" style={{ marginRight: 10 }}>
                 New York City
-              </Chip>
+              </Chip> */}
               <Chip mode="outlined">In Network</Chip>
             </View>
           </View>
@@ -70,20 +71,19 @@ export const ProviderProfileScreen = ({ navigation }) => {
             justifyContent: "space-between",
           }}
         >
-          <Chip mode="outlined">Virtual Possible</Chip>
-          <Chip mode="outlined">Handles Claims</Chip>
+          {provider.virtualPossible ? (
+            <Chip mode="outlined">Virtual Possible</Chip>
+          ) : null}
+          {provider.reimbursementHandling ? (
+            <Chip mode="outlined">Handles Claims</Chip>
+          ) : null}
         </View>
-        <View style={{ marginTop: 20 }}>
+        {/* <View style={{ marginTop: 20 }}>
           <Title>Reviews</Title>
           <View
             style={{
               marginTop: 20,
               borderRadius: 10,
-              // shadowColor: "#000",
-              // shadowOpacity: 0.1,
-              // shadowRadius: 10,
-              // shadowOffset: { width: 0, height: 2 },
-              // elevation : 2,
             }}
           >
             <Card style={{ marginBottom: 20 }}>
@@ -137,7 +137,7 @@ export const ProviderProfileScreen = ({ navigation }) => {
               </Card.Content>
             </Card>
           </View>
-        </View>
+        </View> */}
       </ScrollView>
     </SafeArea>
   );

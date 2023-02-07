@@ -32,7 +32,7 @@ const sampleClaims = [
   },
 ];
 
-export const ClaimsListScreen = ({ navigation, claims }) => {
+export const ClaimsListScreen = ({ navigation, route }) => {
   React.useLayoutEffect(() => {
     navigation.setOptions({
       headerLeft: () => (
@@ -56,7 +56,7 @@ export const ClaimsListScreen = ({ navigation, claims }) => {
       ),
     });
   }, []);
-  // const { func_completeTask, func_getUserTasks } = useContext(UserDataContext);
+  const { appUser } = useContext(UserDataContext);
 
   const [searchQuery, setSearchQuery] = useState("");
   const [filteredClaims, setFilteredClaims] = useState(sampleClaims);
