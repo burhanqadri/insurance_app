@@ -57,13 +57,13 @@ export default function App() {
   return (
     <>
       <ApolloProvider client={client}>
-        <FirebaseProvider>
-          <ThemeProvider theme={theme}>
-            <UserDataContextProvider>
+        <UserDataContextProvider>
+          <FirebaseProvider>
+            <ThemeProvider theme={theme}>
               <Navigation />
-            </UserDataContextProvider>
-          </ThemeProvider>
-        </FirebaseProvider>
+            </ThemeProvider>
+          </FirebaseProvider>
+        </UserDataContextProvider>
       </ApolloProvider>
       <StatusBar style="auto" />
     </>

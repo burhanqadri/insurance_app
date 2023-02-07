@@ -1,6 +1,5 @@
 import * as Notifications from "expo-notifications";
 
-import { AppState, StyleSheet, Text, View } from "react-native";
 import {
   CREATE_CLAIM,
   DELETE_CLAIM,
@@ -12,6 +11,7 @@ import { CREATE_USER, GET_USER_BY, UPDATE_USER } from "./queries/users.queries";
 import { GET_COMPANIES_BY, GET_COMPANY_BY } from "./queries/company.queries";
 import { GET_PROVIDERS_BY, GET_PROVIDER_BY } from "./queries/provider.queries";
 import React, { createContext, useEffect, useRef, useState } from "react";
+import { StyleSheet, Text, View } from "react-native";
 import {
   req_createClaim,
   req_getClaim,
@@ -25,16 +25,11 @@ import {
 } from "./requests/provider.requests";
 import { useLazyQuery, useMutation, useQuery } from "@apollo/client";
 
-import { useFirebase } from "../firebase/firebase.context";
-
 // ****************************************
 export const UserDataContext = createContext();
 
 export const UserDataContextProvider = ({ children }) => {
-  const { firebaseUser, loading } = useFirebase();
-
-  const appUserObj = {};
-  const [appUser, setAppUser] = useState(appUserObj);
+  const [appUser, setAppUser] = useState({ uid: "" });
   const [get_User] = useLazyQuery(GET_USER_BY, {
     fetchPolicy: "network-only",
   });
@@ -65,47 +60,19 @@ export const UserDataContextProvider = ({ children }) => {
   // const [do_updateClaim, {}] = useMutation(UPDATE_CLAIM);
 
   // ************************************************************************************************
-  const appState = useRef(AppState.currentState);
-  const [appStateVisible, setAppStateVisible] = useState(appState.current);
-
-  // Useffect for when to update  *******************************************************************
-  useEffect(() => {
-    console.log("STARTING");
-    func_getUser();
-
-    const subscription = AppState.addEventListener(
-      "change",
-      async (nextAppState) => {
-        if (
-          appState.current.match(/inactive|background/) &&
-          nextAppState === "active"
-        ) {
-          console.log("INSIDE RUNNING");
-          // func_getUser();
-        }
-
-        appState.current = nextAppState;
-        setAppStateVisible(appState.current);
-      }
-    );
-
-    return () => {
-      subscription.remove();
-    };
-  }, []);
-
   //
   // users
   //
-  async function func_getUser() {
-    if (!firebaseUser) {
-      console.log("EXITING");
-      return;
+  async function func_getUser(thisUid) {
+    console.log("received call, ", thisUid);
+    var data;
+    try {
+      data = await req_getUser({ uid: thisUid }, get_User);
+    } catch (error) {
+      console.log("ERROR", error);
     }
-    console.log("THERE IS A USER", firebaseUser.uid);
-    const data = await req_getUser({ uid }, get_User);
     console.log("DATA", data);
-    // return data;
+    return data;
   }
 
   async function func_createUser() {
@@ -183,6 +150,8 @@ export const UserDataContextProvider = ({ children }) => {
   return (
     <UserDataContext.Provider
       value={{
+        appUser,
+        setAppUser,
         //
         func_createUser,
         func_getUser,

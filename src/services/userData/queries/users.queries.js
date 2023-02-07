@@ -3,10 +3,9 @@ import gql from "graphql-tag";
 // users  ***************************************************************************************************
 export const GET_USER_BY = gql`
   query ($uid: ID!) {
-    getUser(uid: $uid) {
+    getUserBy(uid: $uid) {
       uid
-      name
-      # phone
+      phone
       # companies {
       #   name
       # }
