@@ -28,7 +28,7 @@ export const ProfileScreen = ({ navigation }) => {
     });
   }, []);
 
-  // const { func_completeTask, func_getUserTasks } = useContext(UserDataContext);
+  const { appUser } = useContext(UserDataContext);
 
   const [editingName, setEditingName] = React.useState(false);
   const [editingEmail, setEditingEmail] = React.useState(false);
@@ -71,7 +71,7 @@ export const ProfileScreen = ({ navigation }) => {
           <Title style={styles.headerTitle}>Profile</Title>
         </View>
         <View style={styles.content}>
-          <Card style={styles.card}>
+          {/* <Card style={styles.card}>
             <Card.Content>
               <View
                 style={{
@@ -127,7 +127,7 @@ export const ProfileScreen = ({ navigation }) => {
                 <Paragraph>{email}</Paragraph>
               )}
             </Card.Content>
-          </Card>
+          </Card> */}
           <TouchableOpacity
             onPress={() => {
               navigation.navigate("CompanySelect");
@@ -136,7 +136,8 @@ export const ProfileScreen = ({ navigation }) => {
             <Card style={styles.card}>
               <Card.Content>
                 <Title>Company</Title>
-                <Paragraph>{company}</Paragraph>
+                <Paragraph>Apple</Paragraph>
+                {/* <Paragraph>{appUser.companies[0].name}</Paragraph> */}
               </Card.Content>
             </Card>
           </TouchableOpacity>
@@ -148,7 +149,12 @@ export const ProfileScreen = ({ navigation }) => {
             <Card style={styles.card}>
               <Card.Content>
                 <Title>Plan</Title>
-                <Paragraph>{plan}</Paragraph>
+                <Paragraph>Standard</Paragraph>
+                {/* <View>
+                  {appUser.insurancePlans.map((thisPlan) => (
+                    <Paragraph>{plan}</Paragraph>
+                  ))}
+                </View> */}
               </Card.Content>
             </Card>
           </TouchableOpacity>

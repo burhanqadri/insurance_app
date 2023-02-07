@@ -4,7 +4,7 @@ import { ScrollView, Text, View } from "react-native";
 
 import { UserDataContext } from "../../../services/userData/userData.context";
 
-export const PlanSelectScreen = ({ navigation, plans }) => {
+export const PlanSelectScreen = ({ navigation, route }) => {
   //   React.useLayoutEffect(() => {
   //     navigation.setOptions({
   //       headerLeft: () => (
@@ -18,14 +18,16 @@ export const PlanSelectScreen = ({ navigation, plans }) => {
   //       ),
   //     });
   //   }, []);
-
-  const [selectedPlan, setSelectedPlan] = useState(null);
+  const { appUser, func_updateUser } = useContext(UserDataContext);
   const [selectedPlans, setSelectedPlans] = useState([]);
-  // const { func_completeTask, func_getUserTasks } = useContext(UserDataContext);
 
   const handleSelectPlan = (plan) => {
-    setSelectedPlan(plan);
-    setSelectedPlans([...selectedPlans, plan]);
+    const index = selectedPlans.indexOf(plan);
+    if (index >= 0) {
+      setSelectedPlans(selectedPlans.filter((_, i) => i !== index));
+    } else {
+      setSelectedPlans([...selectedPlans, plan]);
+    }
   };
 
   const handleSubmit = () => {
@@ -41,7 +43,9 @@ export const PlanSelectScreen = ({ navigation, plans }) => {
             <Card.Content>
               <RadioButton
                 value={plan.id}
-                status={selectedPlan === plan.id ? "checked" : "unchecked"}
+                status={
+                  selectedPlans.includes(plan.id) ? "checked" : "unchecked"
+                }
                 onPress={() => handleSelectPlan(plan.id)}
               />
               <View style={{ marginLeft: 20 }}>

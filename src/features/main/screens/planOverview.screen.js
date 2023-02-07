@@ -89,7 +89,7 @@ export const PlanOverviewScreen = ({ navigation }) => {
     });
   }, []);
 
-  // const { func_completeTask, func_getUserTasks } = useContext(UserDataContext);
+  const { appUser } = useContext(UserDataContext);
 
   const [searchQuery, setSearchQuery] = useState("");
   const [filteredServices, setFilteredServices] = useState(services);

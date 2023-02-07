@@ -91,7 +91,7 @@ export const UserDataContextProvider = ({ children }) => {
   async function func_updateUser(userFilter) {
     try {
       await do_updateUser({
-        variables: { uid, ...userFilter },
+        variables: { uid: appUser.uid, ...userFilter },
       });
     } catch (error) {
       console.log("ERROR in updateUser", error);
