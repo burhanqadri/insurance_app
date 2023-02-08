@@ -45,6 +45,7 @@ export const ProviderProfileScreen = ({ navigation, route }) => {
             style={{ width: 128, height: 128, borderRadius: 64 }}
             source={{
               uri: "https://randomuser.me/api/portraits/women/44.jpg",
+              // uri: provider.image,
             }}
           />
           <View style={{ marginLeft: 20 }}>

@@ -77,12 +77,17 @@ export const ProviderSearchScreen = ({ navigation, route }) => {
 
   return (
     <ScrollView style={{ flex: 1, padding: 16 }}>
+      <View style={{ alignItems: "left", paddingVertical: 14 }}>
+        <Title style={{ fontSize: 32, fontWeight: "bold" }}>
+          Find provider
+        </Title>
+      </View>
       {practitioners.map((thisProvider) => (
         <TouchableOpacity
           key={thisProvider.id}
           onPress={() =>
             navigation.navigate("ProviderProfile", {
-              providerID: thisProvider.providerID,
+              provider: thisProvider,
             })
           }
         >

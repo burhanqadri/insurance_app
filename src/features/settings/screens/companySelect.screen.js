@@ -87,6 +87,16 @@ export const CompanySelectScreen = ({ navigation, route }) => {
             <View style={{ flex: 1 }}>
               <Text style={{ fontSize: 20 }}>{company.name}</Text>
             </View>
+            {/* {!company.available && (
+              <Button
+                mode="contained"
+                color="#3498db"
+                style={{ borderRadius: 8, paddingHorizontal: 16 }}
+                onPress={() => console.log(`Requested to add ${company.name}`)}
+              >
+                Request to add
+              </Button>
+            )} */}
             {selectedCompany === company && (
               <Ionicons name="md-checkmark-circle" size={24} color="green" />
             )}
@@ -96,10 +106,11 @@ export const CompanySelectScreen = ({ navigation, route }) => {
       <View style={{ padding: 16, alignItems: "center" }}>
         <Button
           mode="contained"
+          // style={{ marginTop: 16 }}
           disabled={!selectedCompany}
           onPress={() => {
-            setAppUser({ ...appUser, company: selectedCompany.name });
-            navigation.navigate("Dashboard");
+            setAppUser({ ...appUser, companies: [selectedCompany.name] });
+            navigation.navigate("PlanSelect", { plans: selectedCompany.plans });
           }}
         >
           Next

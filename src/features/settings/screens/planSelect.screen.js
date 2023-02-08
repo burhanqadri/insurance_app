@@ -5,19 +5,20 @@ import { ScrollView, Text, View } from "react-native";
 import { UserDataContext } from "../../../services/userData/userData.context";
 
 export const PlanSelectScreen = ({ navigation, route }) => {
-  //   React.useLayoutEffect(() => {
-  //     navigation.setOptions({
-  //       headerLeft: () => (
-  //         <TouchableOpacity
-  //           onPress={() => {
-  //             navigation.navigate("CompanySelect");
-  //           }}
-  //         >
-  //           <Ionicons name="arrow-back" size={24} color="black" />
-  //         </TouchableOpacity>
-  //       ),
-  //     });
-  //   }, []);
+  React.useLayoutEffect(() => {
+    navigation.setOptions({
+      headerLeft: () => (
+        <TouchableOpacity
+          onPress={() => {
+            navigation.goBack();
+            // navigation.navigate("CompanySelect");
+          }}
+        >
+          <Ionicons name="arrow-back" size={24} color="black" />
+        </TouchableOpacity>
+      ),
+    });
+  }, []);
   const { appUser, func_updateUser } = useContext(UserDataContext);
   const [selectedPlans, setSelectedPlans] = useState(appUser.insurancePlans);
 

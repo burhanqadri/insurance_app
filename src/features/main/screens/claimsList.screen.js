@@ -59,7 +59,12 @@ export const ClaimsListScreen = ({ navigation, route }) => {
   const { appUser } = useContext(UserDataContext);
 
   const [searchQuery, setSearchQuery] = useState("");
-  const [filteredClaims, setFilteredClaims] = useState(sampleClaims);
+  const [filteredClaims, setFilteredClaims] = useState(appUser.claims);
+
+  // test if this is possible, otherwise do [appUser] instead
+  // useEffect(() => {
+  //   setFilteredClaims(appUser.claims);
+  // }, [appUser.claims]);
 
   const onChangeSearch = (query) => {
     setSearchQuery(query);

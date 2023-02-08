@@ -136,25 +136,28 @@ export const ProfileScreen = ({ navigation }) => {
             <Card style={styles.card}>
               <Card.Content>
                 <Title>Company</Title>
-                <Paragraph>Apple</Paragraph>
-                {/* <Paragraph>{appUser.companies[0].name}</Paragraph> */}
+                {/* <Paragraph>Apple</Paragraph> */}
+                <Paragraph>{appUser.companies[0].name}</Paragraph>
               </Card.Content>
             </Card>
           </TouchableOpacity>
           <TouchableOpacity
             onPress={() => {
-              navigation.navigate("PlanSelect");
+              // navigation.navigate("PlanSelect");
+              navigation.navigate("PlanSelect", {
+                plans: appUser.companies[0].insurancePlans,
+              });
             }}
           >
             <Card style={styles.card}>
               <Card.Content>
                 <Title>Plan</Title>
-                <Paragraph>Standard</Paragraph>
-                {/* <View>
+                {/* <Paragraph>Standard</Paragraph> */}
+                <View>
                   {appUser.insurancePlans.map((thisPlan) => (
                     <Paragraph>{plan}</Paragraph>
                   ))}
-                </View> */}
+                </View>
               </Card.Content>
             </Card>
           </TouchableOpacity>
