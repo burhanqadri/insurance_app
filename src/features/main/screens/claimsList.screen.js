@@ -70,7 +70,7 @@ export const ClaimsListScreen = ({ navigation, route }) => {
     setSearchQuery(query);
     const lowercasedQuery = query.toLowerCase();
     setFilteredClaims(
-      sampleClaims.filter(
+      appUser.claims.filter(
         (claim) =>
           claim.serviceCovered.toLowerCase().includes(lowercasedQuery) ||
           claim.serviceGroup.toLowerCase().includes(lowercasedQuery)
